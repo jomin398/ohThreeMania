@@ -1,0 +1,168 @@
+:root {
+    --album-imageWidth: 300px;
+}
+
+
+
+.songDiffListWrap {
+    position: relative;
+    margin-left: calc(var(--bs-gutter-x)* .5);
+    margin-right: calc(var(--bs-gutter-x)* .5);
+    overflow: hidden;
+}
+
+.songDiffList .carousel-item.active {
+    display: flex;
+}
+
+.songInfoWrap .songTitle {
+    color: var(--songListTitleColor);
+    margin: 0;
+    min-height: 1.3em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-left: 0.2em;
+}
+
+.songInfoWrap p.albumArtist {
+    margin-left: 1em;
+    color: var(--albumArtistNameColor);
+    font-size: 1.3em;
+    margin-bottom: 0.3em;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+.infoBottomWrap {
+    background-color: #a8dffe8c;
+    overflow-y: auto;
+    direction: rtl;
+}
+
+.infoBottom {
+    direction: ltr;
+}
+
+.levelListWrap,
+.levelList {
+    position: relative;
+}
+
+.levelListWrap {
+    direction: rtl;
+}
+
+.levelList {
+    gap: 0.5em;
+    overflow: auto;
+}
+
+.levelList .levelItem {
+    border: 5px solid transparent;
+    padding: 0;
+    gap: 0.5em;
+    border-radius: 1em;
+    font-size: 1.5em;
+    position: relative;
+    color: #fff !important;
+    direction: ltr;
+}
+
+.innerWrap {
+    display: flex;
+    justify-content: space-between;
+    border-radius: inherit;
+    padding: 0 5px;
+    font-size: 1em;
+    border: 2px solid transparent;
+}
+
+.beatmap-icon {
+    color: #fff;
+    display: flex;
+}
+
+.beatmap-icon-beatmapset {
+    font-size: 24px;
+    position: relative;
+}
+
+.beatmapConvertedWarn #icon_TransFrom {
+    margin-top: -0.2em;
+}
+
+.songDiffList [class^=carousel-control-]>span {
+    border-radius: 50%;
+}
+
+#songSourceBtn {
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+}
+
+.songSourceWrap .song-src::after {
+    content: ",";
+}
+
+@media screen and (max-width:1023px) {
+    .songDiffListWrap {
+        overflow: auto;
+    }
+
+    .songDiffList .carousel-inner {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    .songDiffList .carousel-item.active {
+        flex-direction: column;
+    }
+
+    .songInfoWrap p.albumArtist {
+        overflow: hidden;
+    }
+
+    .levelList {
+        display: none !important;
+    }
+    .songDiffList #songSourceBtn{
+        left: 0;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    :root {
+        --album-imageWidth: 420px;
+    }
+
+    .songDiffList {
+        height: var(--album-imageWidth);
+    }
+
+    .songDiffList .carousel-inner,
+    .songDiffList .carousel-inner .carousel-item {
+        height: inherit;
+    }
+
+    .songInfoWrap .songTitle {
+        width: calc(100% - var(--chrImageWidth));
+    }
+
+    .songInfoWrap p.albumArtist {
+        width: calc(100% - var(--chrImageWidth) - 1em);
+        overflow-x: clip;
+    }
+
+    .levelListWrap {
+        width: calc(100% - var(--chrImageWidth));
+    }
+
+    .levelListWrap .innerWrap {
+        width: 80%;
+    }
+}

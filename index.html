@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" data-bs-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
+  <title>Oh Three Mania</title>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/renderCont.css">
+  <link rel="stylesheet" href="./css/accuracy.css">
+  <link rel="stylesheet" href="./css/faExta.css">
+  <link rel="stylesheet" href="./css/chrVn.css">
+  <link rel="stylesheet" href="./css/progress.css">
+  <link rel="stylesheet" href="./css/chrImage.css">
+  <link rel="stylesheet" href="./css/songDiffList.css">
+  <link rel="stylesheet" href="./css/vocalList.css">
+  <link rel="stylesheet" href="./css/songList.css">
+  <link rel="stylesheet" href="./css/selfCrash.css">
+  <link rel="stylesheet" href="./css/rangeTooltip.css">
+  <link rel="stylesheet" href="./css/gameGauge.css">
+  <link rel="stylesheet" href="./css/settingMenu.css">
+  <link rel="stylesheet" href="./css/comboSys.css">
+  <link rel="stylesheet" href="./css/resultInfo.css">
+  <script type="importmap">
+      {
+        "imports": {
+          "howler":"https://cdn.jsdelivr.net/npm/howler@2.2.4/+esm",
+          "three": "https://cdn.jsdelivr.net/npm/three@latest/+esm",
+          "jszip": "https://cdn.jsdelivr.net/npm/jszip@latest/+esm",
+          "osu-classes": "./src/calculate/classes.mjs",
+          "osu-standard-stable": "./src/calculate/standard-stable.mjs",
+          "osu-mania-stable": "./src/calculate/mania-stable.mjs",
+          "osu-parsers": "./src/calculate/parsers.mjs",
+          "buffer": "https://cdn.jsdelivr.net/npm/@jspm/core@2.0.1/nodelibs/browser/buffer.js",
+          "osu-pp-calculator": "./src/calculate/index.js"
+        }
+      }
+    </script>
+  <script type="module">
+    import gameClient from "./src/game/gameClient.js";
+    new gameClient();
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+.vocalWrap {
+    gap: 1em;
+    display: flex;
+    align-items: center;
+    background-color: #8ecafc;
+    padding: 0.5em;
+}
+
+.vocalLabel {
+    font-size: 1.3em;
+    font-weight: bolder;
+}
+
+.vocalList {
+    background-color: #000;
+    color: #fff;
+    font-size: 1.2em;
+    padding: 0.2em 0.5em;
+    border-radius: 0.5em;
+    white-space: nowrap;
+    /* max-height: 1.8em; */
+    overflow: auto;
+}
+
+.vocalListItem.active {
+    border: 1px solid gold;
+}
+
+@media screen and (max-width:1023px) {
+    .vocalList {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .vocalList {
+        width: calc((100% - (var(--chrImageWidth) + 4em)));
+    }
+}

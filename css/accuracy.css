@@ -1,0 +1,119 @@
+.accCont {
+    position: relative;
+    font-size: 1.2em;
+    color: #fff;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0 5px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "label_comb combo"
+        "label_maxcomb maxcomb";
+    padding: 5px;
+}
+
+._accCont {
+
+    grid-template-areas:
+        "label_comb combo"
+        "label_acc accuracy"
+        "label_maxcomb maxcomb"
+        "label_noteAcc noteAcc"
+        "label_perfect perfect"
+        "label_great great"
+        "label_good good"
+        "label_miss miss"
+        "label_fast fast"
+        "label_late late";
+}
+
+
+.accCont .label_maxcomb {
+    grid-area: label_maxcomb;
+}
+
+.accCont .maxcomb {
+    grid-area: maxcomb;
+}
+
+.accCont .label_comb {
+    grid-area: label_comb;
+}
+
+.accCont .combo {
+    grid-area: combo;
+}
+
+.accCont .label_acc {
+    grid-area: label_acc;
+}
+
+.accCont .accuracy {
+    grid-area: accuracy;
+}
+
+.accCont .label_perfect {
+    grid-area: label_perfect;
+}
+
+.accCont .perfect {
+    grid-area: perfect;
+}
+
+.accCont .label_great {
+    grid-area: label_great;
+}
+
+.accCont .great {
+    grid-area: great;
+}
+
+.accCont .label_miss {
+    grid-area: label_miss;
+}
+
+.accCont .miss {
+    grid-area: miss;
+}
+
+.accCont .label_fast {
+    grid-area: label_fast;
+}
+
+.accCont .fast {
+    grid-area: fast;
+}
+
+.accCont .label_late {
+    grid-area: label_late;
+}
+
+.accCont .late {
+    grid-area: late;
+}
+
+[id^=lane-] .text,
+[id^=lane-] .msc,
+[id^=lane-] .timing {
+    /* animation: fadeoutDisp 1s forwards; */
+    min-height: 1.5em;
+}
+
+.judgeFast {
+    color: #66b0f7;
+}
+
+.judgeLate {
+    color: #e74f80;
+}
+
+@keyframes fadeoutDisp {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,265 @@
+:root {
+    --resultCoverSize: 150px;
+}
+
+.resultInfo {
+    width: inherit;
+    height: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.resultInfo .modal-header {
+    border-top: 4px solid #1d87dd;
+    border-bottom: 4px solid #1d87dd;
+    background-color: #d2eaff;
+}
+
+.resultInfo .headerInfoWrap {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: calc(var(--resultCoverSize) + 0.9em);
+}
+
+.resultInfo #songtitle {
+    font-size: 1.6em;
+    font-weight: bolder;
+    height: 2.8em;
+    background-color: white;
+    color: var(--bs-black);
+}
+
+.resultInfo .extraInfoWrap {
+    padding-left: 2px;
+    font-size: 1.2em;
+    background-color: #fff;
+    color: var(--bs-black);
+    border-radius: .5em;
+
+}
+
+.resultInfo .albumWrap {
+    border: 4px solid #1d87dd;
+    border-radius: 0.5em;
+    padding: 3px;
+    width: calc(var(--resultCoverSize) + 14px);
+    height: calc(var(--resultCoverSize) + 14px);
+}
+
+
+
+.resultInfo .albumCover {
+    width: var(--resultCoverSize);
+    height: var(--resultCoverSize);
+    min-width: var(--resultCoverSize);
+    min-height: var(--resultCoverSize);
+    object-fit: cover;
+
+}
+
+.resultInfo .albumCover[src=""] {
+    border: 2px inset red;
+}
+
+.vocalInfoWrap {
+    gap: .5rem;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.resultInfo .bpmInfoWrap {
+    border-radius: .5em;
+    background-color: var(--bs-black);
+    color: var(--bs-white);
+    padding: 0 0.4em;
+    font-size: 1.2em;
+    margin-left: 0.7em;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    gap: .5rem;
+    display: flex;
+    align-items: center;
+}
+
+.resultInfo #label_vocal {
+    font-size: 1.2em;
+    font-weight: bolder;
+    margin-left: 2px;
+    color: var(--bs-black);
+}
+
+.resultInfo #vocalList {
+    font-size: 1.2em;
+    background-color: #000;
+    color: white;
+    padding-left: 0.5em;
+}
+
+.resultInfo .diffWrap {
+    color: #fff;
+    text-shadow: 0 2px 0 #000;
+    border-radius: .5em;
+    font-size: 1.5em;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-around;
+    height: 1.2em;
+    align-items: center;
+}
+
+.resultInfo .tab-content .show.active {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.5em;
+}
+
+.resultInfo #scoreLabel {
+    position: absolute;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    line-height: 1em;
+    top: 0;
+    left: 0;
+    padding: 3px;
+    border: 2px solid #000;
+    background-color: #000;
+    border-bottom-right-radius: 0.8em;
+    color: #fff;
+}
+
+.resultInfo #score {
+    font-size: 2.5em;
+    line-height: 1em;
+    letter-spacing: 3px;
+    margin-top: 0.7em;
+}
+
+.resultInfo #playRank,
+.resultInfo #clearMsg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    line-height: 1em;
+}
+
+.resultInfo #playRank {
+    font-size: 3em;
+    min-width: 3em;
+    font-weight: bolder;
+}
+
+.resultInfo #clearMsg {
+    font-size: 2em;
+    letter-spacing: 2px;
+    flex-grow: 1;
+}
+
+.resultJudgeWrap .levelItem {
+    border: 3px solid;
+    border-color: var(--levelcolor);
+    padding: 0;
+    gap: 0.5em;
+    border-radius: 1em;
+    font-size: 1.2em;
+    position: relative;
+    color: var(--bs-black);
+    display: flex;
+    align-items: center;
+    padding-right: 0.5em;
+}
+
+.resultJudgeWrap .levelItem * {
+    justify-content: center;
+}
+
+.resultJudgeWrap .levelItem .inner {
+    display: flex;
+    width: 50%;
+    border: 2px solid #fff;
+    border-radius: inherit;
+    padding: 0 5px;
+    font-size: 1em;
+    background-color: var(--levelcolor);
+    align-items: center;
+    line-height: 1.2em;
+}
+
+.resultJudgeWrap .levelItem :nth-child(2) {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    color: var(--bs-body-color);
+}
+
+.resultInfo .label_acc,
+.resultInfo .label_chartGFX {
+    font-size: 1.5em;
+}
+
+.resultInfo .progressWrap {
+    width: 100%;
+    height: 20px;
+    font-size: 1.5em;
+}
+
+.resultInfo .chartGFXWrap {
+    overflow-x: auto;
+    /* 가로 스크롤 지원 */
+    width: 100%;
+    height: 250px;
+    /* 컨테이너가 가득 차도록 설정 */
+    background-color: black;
+}
+
+.resultInfo .fastWrap,
+.resultInfo .lateWrap {
+    font-size: 1.4em;
+    width: 50%;
+    justify-content: space-between;
+    background-color: #000;
+    color: white;
+    padding: 5px;
+}
+
+.resultInfo .label_fast,
+.resultInfo .label_late {
+    border-bottom-right-radius: 0.8em;
+    width: 4em;
+}
+
+.resultInfo .label_fast {
+    border: 2px solid #b32892;
+    background-color: #b32892;
+}
+
+.resultInfo .label_late {
+    border: 2px solid #0dcaf0;
+    background-color: #0dcaf0;
+}
+@media screen and (max-width:426px) {
+    .resultInfo .modal-header{
+        flex-direction: column;
+    }
+}
+@media screen and (min-width:1024px) {
+    .resultInfo nav {
+        display: none;
+    }
+
+    .resultInfo .tab-content {
+        gap: 1rem;
+    }
+
+    .resultInfo .tab-content>.tab-pane {
+        display: initial;
+        opacity: 1;
+    }
+
+    .resultInfo .tab-content .tab-pane:nth-child(2) {
+        width: 40% !important;
+    }
+}

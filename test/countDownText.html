@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function startCountdownPromise(bpm, millisecondsUntilStart, countdownSpeed, countdownOffset) {
+            return new Promise((resolve, reject) => {
+                if (countdownSpeed === 0) {
+                    console.log("No countdown, start immediately.");
+                    resolve(); // 즉시 resolve
+                    return;
+                }
+
+                let msPerBeat = 60000 / bpm; // BPM을 기반으로 박자당 시간 계산
+
+                switch (countdownSpeed) {
+                    case 1: // 일반 속도: 변화 없음
+                        break;
+                    case 2: // 반 속도: 박자당 시간 두 배로
+                        msPerBeat *= 2;
+                        break;
+                    case 3: // 더블 속도: 박자당 시간 반으로
+                        msPerBeat /= 2;
+                        break;
+                    default:
+                        console.log("Invalid countdown speed");
+                        reject(new Error("Invalid countdown speed")); // 유효하지 않은 countdownSpeed에 대해 reject
+                        return;
+                }
+
+                // 카운트다운 시작 시간 조정
+                const countdownStartDelay = millisecondsUntilStart - msPerBeat * countdownOffset;
+
+                if (countdownStartDelay < 0) {
+                    console.log("Not enough time for countdown.");
+                    reject(new Error("Not enough time for countdown")); // 충분한 시간이 없을 때 reject
+                    return;
+                }
+                setTimeout(() => {
+                    let countdownNumber = 3; // 카운트다운 숫자 시작값
+
+                    const countdownInterval = setInterval(() => {
+                        console.log(countdownNumber); // 현재 카운트다운 숫자 출력
+                        countdownNumber--;
+
+                        if (countdownNumber < 0) {
+                            clearInterval(countdownInterval);
+                            console.log("Start!"); // 게임 시작
+                            resolve(); // 카운트다운 완료 시 resolve
+                        }
+                    }, msPerBeat);
+                }, countdownStartDelay);
+            });
+        }
+
+        // 사용 예:
+        startCountdownPromise(120, 1000, 1, 0); // 반속도로 설정
+        // 일반 속도, 4박자 더 일찍 시작
+        //startCountdown(120, 30000, 2, 2); // 반 속도, 2박자 더 일찍 시작
+        //startCountdown(120, 30000, 3, 0); // 더블 속도, 추가 박자 없음
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

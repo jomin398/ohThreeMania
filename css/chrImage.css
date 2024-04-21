@@ -1,0 +1,71 @@
+:root {
+    --chrImageWidth: 280px;
+}
+
+.chrImage {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 610px;
+    max-height: 610px;
+    overflow: hidden;
+}
+
+.chrImage .faceWrap {
+    position: relative;
+    height: inherit;
+    width: inherit;
+    background-image: var(--skinBase);
+    background-repeat: no-repeat;
+}
+
+.chrImage .face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.chrImage .mouthWrap {
+    position: relative;
+    height: inherit;
+    width: inherit;
+}
+
+/* 모바일 뷰 */
+@media screen and (max-width:1023px) {
+    .chrImage {
+        top: 32%;
+        bottom: unset;
+        height: 100px;
+        width: 100px;
+        right: 0;
+    }
+
+    .chrImage .faceWrap {
+        background-size: unset;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+/* PC뷰 */
+@media screen and (min-width:1024px) {
+    .chrImage {
+        width: var(--chrImageWidth);
+    }
+
+    .chrImage .faceWrap {
+        background-size: 170%;
+        background-position-x: var(--posx);
+        background-position-y: var(--posy);
+    }
+
+    .chrImage .face {
+        background-image: var(--skinFace);
+        background-size: 945%;
+    }
+
+    .chrImage .mouth {
+        background-image: var(--skinFace);
+    }
+}

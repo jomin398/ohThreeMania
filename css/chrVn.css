@@ -1,0 +1,81 @@
+.chrMove-up {
+    animation: moveUP var(--anitime)
+}
+
+.chrMove-down {
+    animation: moveDown var(--anitime)
+}
+
+.chrMove-shake {
+    animation: shaking var(--anitime)
+}
+
+.chrFadeIn {
+    animation: chr-fadeIn var(--anitime)
+}
+
+.chrFadeOut {
+    animation: chr-fadeOut var(--anitime)
+}
+
+@keyframes moveUP {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(calc(var(--movingVac) * -1));
+    }
+}
+
+@keyframes moveDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(var(--movingVac));
+    }
+}
+
+@keyframes shaking {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(calc(var(--movingVac) * -1));
+        /* 왼쪽으로 이동 */
+    }
+
+    75% {
+        transform: translateX(var(--movingVac));
+        /* 오른쪽으로 이동 */
+    }
+}
+
+@keyframes chr-fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes chr-fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

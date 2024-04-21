@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Loopable Audio Preview with jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="audioPlayer">
+        <audio id="audio">
+            <source src="./data/demo/aile-jang.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        <button id="playPauseBtn">미리듣기</button>
+        <select id="trackSelect">
+            <option value="./data/demo/aile-jang.mp3">곡 1</option>
+            <option value="./data/demo/sakuranoAme.mp3">곡 2</option>
+        </select>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var audio = $('#audio')[0]; // 오디오 요소 선택
+            var previewDuration = 10; // 미리듣기 재생 시간 (예: 10초)
+            var startOffset = 0; // 시작 지점 (예: 5초)
+            var timer = null;
+            $('#playPauseBtn').click(function () {
+                audio.currentTime = startOffset; // 미리듣기 시작 지점 설정
+                audio.play(); // 미리듣기 시작
+                $(this).prop('disabled', true); // 버튼 비활성화
+
+                timer = setTimeout(function () {
+                    audio.pause(); // 지정된 시간 후 재생 중지
+                    $('#playPauseBtn').prop('disabled', false); // 버튼 활성화
+                }, previewDuration * 1000); // 밀리초 단위로 변환
+            });
+
+            $('#trackSelect').change(function () {
+                audio.pause();
+                $('#playPauseBtn').prop('disabled', false);
+                clearTimeout(timer);
+                var selectedTrack = $(this).val();
+                $('#audio source').attr('src', selectedTrack);
+                audio.load(); // 새 소스로 오디오 재로드
+            });
+        });
+    </script>
+
+</body>
+
+</html>

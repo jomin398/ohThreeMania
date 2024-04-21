@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/chrVn.css">
+    <link rel="stylesheet" href="./css/songList.css">
+    <link rel="stylesheet" href="./data/skin/style.css">
+    <script type="module">
+        import ChrAnimator from './src/game/chrAnimator.js';
+        await new Promise(r => window.onload = () => r(1));
+        const animator = new ChrAnimator();
+        await animator.init(".chrImage", './data/skin/dialogues.json');
+
+        $(".faceButtions").find("button").each(function (index) {
+            $(this).attr("id", "face" + (index + 1)).on("click", function () {
+                let n = parseInt($(this).attr('id').replace('face', ''));
+                // n을 1과 2를 바꾸는걸 반복하면 눈을 깜박거림
+                animator.face(n)
+            });
+        });
+        $(".mouthButtons").find("button").each(function (index) {
+            $(this).attr("id", "mouth" + (index + 1)).on("click", function () {
+                let n = parseInt($(this).attr('id').replace('mouth', ''));
+                animator.mouth(n)
+            });
+        });
+        $(".transformButtons [id^=trans]").on("click", function (e) {
+            e.stopPropagation();
+            const buttonId = this.id.charAt(this.id.length - 1);
+            animator.moveChr(buttonId)
+        });
+        //상시 눈을 깜빡임.
+        animator.startEyeBlinking();
+        //대화 스크립트 실행합니다.
+        // clearInterval(blinkInterval); //깜박임 중단.
+
+        $(".motionButtons #tips").on("click", async function () {
+            await animator.executeScript(animator.dialogueList.tips);
+        });
+        $(".motionButtons #select").on("click", function () {
+            $("audio#voice").attr("src", "./data/skin/voices/select_02.mp3");
+            // 기존 'canplaythrough' 이벤트 리스너를 제거
+            $("audio#voice").off("canplaythrough")
+            $("audio#voice").on("canplaythrough", async function () {
+                $("audio#voice")[0].play();
+                await animator.executeScript(animator.dialogueList.select);
+                $("audio#voice")[0].src = '';
+            })
+            $("audio#voice")[0].load();
+        });
+        $(".motionButtons #info").on("click", function () {
+            $("audio#voice").attr("src", "./data/skin/voices/customize_10.mp3");
+            // 기존 'canplaythrough' 이벤트 리스너를 제거
+            $("audio#voice").off("canplaythrough")
+            $("audio#voice").on("canplaythrough", async function () {
+                $("audio#voice")[0].play();
+                await animator.executeScript(animator.dialogueList.info);
+                $("audio#voice")[0].src = '';
+            })
+            $("audio#voice")[0].load();
+
+        })
+        $(".motionButtons #levelStart").on("click", function () {
+            $("audio#voice").attr("src", "./data/skin/sysVoices/difficulty_03.mp3");
+            $("audio#voice").off("canplaythrough")
+            $("audio#voice").on("canplaythrough", async function () {
+                $("audio#voice")[0].play();
+                await animator.executeScript(animator.dialogueList.levelStart);
+                $("audio#voice")[0].src = '';
+            });
+            $("audio#voice")[0].load();
+        })
+
+
+
+    </script>
+</head>
+
+<body>
+    <audio id="voice" controls></audio>
+    <div class="chrImage">
+        <div class="faceWrap">
+            <div class="face">
+                <div class="mouthWrap">
+                    <div class="mouth" id="m2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="controls d-flex flex-column">
+        <div class="faceButtions">
+            <label for="faceButtons">Facial Expressions:</label>
+            <div id="faceButtons">
+                <button type="button" class="btn btn-primary" id="face1">eyeOpen</button>
+                <button type="button" class="btn btn-primary" id="face2">eyeClose</button>
+                <button type="button" class="btn btn-primary" id="face3">Smile</button>
+                <button type="button" class="btn btn-primary" id="face4">Surprised</button>
+                <button type="button" class="btn btn-primary" id="face5">Disappointed</button>
+            </div>
+
+        </div>
+        <div class="mouthButtons">
+            <label for="mouthButtons">Mouth Expressions:</label>
+            <div id="mouthButtons">
+                <button type="button" class="btn btn-primary" id="mouth1">E</button>
+                <button type="button" class="btn btn-primary" id="mouth2">mouthClose</button>
+                <button type="button" class="btn btn-primary" id="mouth3">Sad</button>
+                <button type="button" class="btn btn-primary" id="mouth4">Surprised</button>
+                <button type="button" class="btn btn-primary" id="mouth5">Ah</button>
+            </div>
+        </div>
+        <div class="transformButtons">
+            <label for="transformButtons">Animation transforms:</label>
+            <div id="transformButtons">
+                <button type="button" class="btn btn-primary" id="trans0">reset</button>
+                <button type="button" class="btn btn-primary" id="trans1">up 50px</button>
+                <button type="button" class="btn btn-primary" id="trans2">down 50px</button>
+                <button type="button" class="btn btn-primary" id="trans3">shake LR</button>
+                <button type="button" class="btn btn-primary" id="trans4">FadeIN</button>
+                <button type="button" class="btn btn-primary" id="trans5">FadeOut</button>
+            </div>
+        </div>
+        <div class="motionButtons">
+            <label for="motionButtons">Motions:</label>
+            <div id="motionButtons">
+                <button type="button" class="btn btn-primary" id="tips">tips</button>
+                <button type="button" class="btn btn-primary" id="select">select</button>
+                <button type="button" class="btn btn-primary" id="info">info</button>
+                <button type="button" class="btn btn-primary" id="levelStart">levelStart</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

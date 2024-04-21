@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./data/skin/style.css">
+    <link rel="stylesheet" href="./css/renderCont.css">
+    <link rel="stylesheet" href="./css/accuracy.css">
+    <link rel="stylesheet" href="./css/faExta.css">
+    <link rel="stylesheet" href="./css/chrVn.css">
+    <link rel="stylesheet" href="./css/progress.css">
+    <link rel="stylesheet" href="./css/chrImage.css">
+    <link rel="stylesheet" href="./css/songDiffList.css">
+    <link rel="stylesheet" href="./css/vocalList.css">
+    <link rel="stylesheet" href="./css/songList.css">
+    <link rel="stylesheet" href="./css/selfCrash.css">
+    <link rel="stylesheet" href="./css/rangeTooltip.css">
+    <link rel="stylesheet" href="./css/gameGauge.css">
+    <link rel="stylesheet" href="./css/settingMenu.css">
+    <link rel="stylesheet" href="./css/comboSys.css">
+    <link rel="stylesheet" href="./css/resultInfo.css">
+</head>
+
+<body>
+    <section class="container-fluid d-flex flex-column songSelectWrap">
+        <header class="row container-title justify-content-center">
+            <div class="row">
+                <div class="row row align-items-center">
+                    <h1 class="w-auto text-info">Select Music</h1>
+                    <p class="w-auto m-0 text-info">Select the Song you want to play</p>
+                </div>
+                <div class="searchTab input-group gap-1">
+                    <input class="form-control" type="search" placeholder="아티스트 또는 소스(앨범명)을 입력해주세요" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="filterItems()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <button class="btn btn-outline-danger my-2 my-sm-0" onclick="resetSearch()">reset</button>
+                </div>
+                <div class="songCountWrap">
+                    <h1 class="currentSongNumber">001</h1>
+                    <h1 class="currentSongNumber">/</h1>
+                    <h3 class="totalSongNumber">002</h3>
+                </div>
+            </div>
+        </header>
+        <div class="songDiffListWrap d-flex flex-column flex-grow-1 justify-content-between gap-3">
+            <div id="songDiffList" class="carousel slide songDiffList flex-grow-1">
+                <div class="carousel-inner d-flex w-100 h-100">
+                    <div class="carousel-item active">
+                        <div class="albumCoverWrap d-flex justify-content-center">
+                            <img class="albumCover-big" src="blob:file:///90b9bd8f-31e9-4808-94f2-fcd39dd3a309">
+                        </div>
+                        <div class="songInfoWrap d-flex flex-column flex-grow-1">
+                            <h2 class="songTitle">Snow Fairy Story</h2>
+                            <p class="albumArtist">40mP - Snow Miku</p>
+                            <div class="infoBottomWrap d-flex flex-column flex-grow-1">
+                                <div class="infoBottom d-flex flex-column flex-grow-1">
+                                    <div class="vocalWrap">
+                                        <span class="vocalLabel">VOCAL</span>
+                                        <span class="vocalList"><span class="vocalListItem active" id="artist0">40mP -
+                                                Snow Miku</span>, <span class="vocalListItem"
+                                                id="artist1">40mP</span></span>
+                                    </div>
+                                    <div class="levelListWrap d-flex flex-column flex-grow-1">
+                                        <div class="levelList d-flex flex-column flex-grow-1">
+                                            <input type="radio" class="btn-check" name="Snow Fairy Story"
+                                                id="btn-check-0_0" autocomplete="off" checked="">
+                                            <label class="btn levelItem text-white" for="btn-check-0_0"
+                                                style="border-color:#2bb6a6;">
+                                                <div class="innerWrap"
+                                                    style="background-color: rgb(43, 182, 166); border: 2px dashed var(--bs-btn-color);">
+                                                    <span class="text">Easy</span>
+                                                    <div>
+                                                        <i class="bi bi-hourglass-split"></i>
+                                                        <span class="dur">04:22</span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <span class="starRate">0.87</span>
+                                                    </div>
+                                                    <div class="beatmapConvertedWarn d-flex align-items-center">
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-standard"></i>
+                                                        </span>
+                                                        <span id="icon_TransFrom">⇆</span>
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-mania"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </label><input type="radio" class="btn-check" name="Snow Fairy Story"
+                                                id="btn-check-0_1" autocomplete="off">
+                                            <label class="btn levelItem text-white" for="btn-check-0_1"
+                                                style="border-color:#ffca20;">
+                                                <div class="innerWrap"
+                                                    style="background-color: rgb(255, 202, 32); border: 2px solid transparent;">
+                                                    <span class="text">Hard</span>
+                                                    <div>
+                                                        <i class="bi bi-hourglass-split"></i>
+                                                        <span class="dur">04:23</span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <span class="starRate">3.18</span>
+                                                    </div>
+
+                                                </div>
+                                            </label><input type="radio" class="btn-check" name="Snow Fairy Story"
+                                                id="btn-check-0_2" autocomplete="off">
+                                            <label class="btn levelItem text-white" for="btn-check-0_2"
+                                                style="border-color:#b14bc0;">
+                                                <div class="innerWrap"
+                                                    style="background-color: rgb(177, 75, 192); border: 2px solid transparent;">
+                                                    <span class="text">Expert</span>
+                                                    <div>
+                                                        <i class="bi bi-hourglass-split"></i>
+                                                        <span class="dur">04:22</span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <span class="starRate">5.62</span>
+                                                    </div>
+                                                    <div class="beatmapConvertedWarn d-flex align-items-center">
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-taiko"></i>
+                                                        </span>
+                                                        <span id="icon_TransFrom">⇆</span>
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-mania"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="songSourceWrap d-none"><span class="song-src">VOCALOID</span>, <span
+                                class="song-src">SNOW MIKU 2015</span></div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="albumCoverWrap d-flex justify-content-center">
+                            <img class="albumCover-big" src="blob:file:///6ce6ee70-ad0d-41cd-9c03-9a84f04c4d34">
+                        </div>
+                        <div class="songInfoWrap d-flex flex-column flex-grow-1">
+                            <h2 class="songTitle">気まぐれメルシィ feat. 初音ミク</h2>
+                            <p class="albumArtist">八王子P</p>
+                            <div class="infoBottomWrap d-flex flex-column flex-grow-1">
+                                <div class="infoBottom d-flex flex-column flex-grow-1">
+                                    <div class="vocalWrap">
+                                        <span class="vocalLabel">VOCAL</span>
+                                        <span class="vocalList"><span class="vocalListItem"
+                                                id="artist0">八王子P</span></span>
+                                    </div>
+                                    <div class="levelListWrap d-flex flex-column flex-grow-1">
+                                        <div class="levelList d-flex flex-column flex-grow-1">
+                                            <input type="radio" class="btn-check" name="気まぐれメルシィ feat. 初音ミク"
+                                                id="btn-check-1_0" autocomplete="off" checked="">
+                                            <label class="btn levelItem text-white" for="btn-check-1_0"
+                                                style="border-color:#ffe112;">
+                                                <div class="innerWrap" style="background-color:#ffe112;">
+                                                    <span class="text">Hard</span>
+                                                    <div>
+                                                        <i class="bi bi-hourglass-split"></i>
+                                                        <span class="dur">03:18</span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <span class="starRate">2.97</span>
+                                                    </div>
+                                                    <div class="beatmapConvertedWarn d-flex align-items-center">
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-taiko"></i>
+                                                        </span>
+                                                        <span id="icon_TransFrom">⇆</span>
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-mania"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </label><input type="radio" class="btn-check" name="気まぐれメルシィ feat. 初音ミク"
+                                                id="btn-check-1_1" autocomplete="off">
+                                            <label class="btn levelItem text-white" for="btn-check-1_1"
+                                                style="border-color:#dd4899;">
+                                                <div class="innerWrap" style="background-color:#dd4899;">
+                                                    <span class="text">Insane</span>
+                                                    <div>
+                                                        <i class="bi bi-hourglass-split"></i>
+                                                        <span class="dur">03:18</span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <span class="starRate">4.95</span>
+                                                    </div>
+                                                    <div class="beatmapConvertedWarn d-flex align-items-center">
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-taiko"></i>
+                                                        </span>
+                                                        <span id="icon_TransFrom">⇆</span>
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-mania"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </label><input type="radio" class="btn-check" name="気まぐれメルシィ feat. 初音ミク"
+                                                id="btn-check-1_2" autocomplete="off">
+                                            <label class="btn levelItem text-white" for="btn-check-1_2"
+                                                style="border-color:#b949bd;">
+                                                <div class="innerWrap" style="background-color:#b949bd;">
+                                                    <span class="text">Expert</span>
+                                                    <div>
+                                                        <i class="bi bi-hourglass-split"></i>
+                                                        <span class="dur">03:18</span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <span class="starRate">5.5</span>
+                                                    </div>
+                                                    <div class="beatmapConvertedWarn d-flex align-items-center">
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-taiko"></i>
+                                                        </span>
+                                                        <span id="icon_TransFrom">⇆</span>
+                                                        <span class="beatmap-icon beatmap-icon--beatmapset">
+                                                            <i class="fa-extra-mode-mania"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="songSourceWrap d-none"><span class="song-src">UnSorted</span></div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev justify-content-start align-items-start" type="button">
+                    <span class="carousel-control-prev-icon bg-black" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next justify-content-end align-items-start" type="button">
+                    <span class="carousel-control-next-icon bg-black" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <footer class="d-flex flex-column align-items-center gap-3">
+                <div class="d-flex align-items-center gap-4">
+                    <input type="checkbox" class="btn-check" value="" id="autoPlay">
+                    <label class="btn btn-neon" for="autoPlay">
+                        AutoPlay
+                    </label>
+                    <br>
+                    <input type="checkbox" class="btn-check" value="" id="view3d">
+                    <label class="btn btn-neon" for="view3d">
+                        3D View
+                    </label>
+                </div>
+                <button type="button" class="btn btn-secondary" id="lastScore" disabled="">이전 스코어 보기</button>
+                <button type="button" class="btn btn-primary w-25" id="startBtn">시작</button>
+            </footer>
+        </div>
+        <div class="chrImage">
+            <div class="faceWrap" style="--anitime:1s;">
+                <div class="face" id="f1">
+                    <div class="mouthWrap">
+                        <div class="mouth" id="m2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <i class="settingBtn bi bi-gear d-none"></i>
+    </section>
+
+    <script>
+        // 초기 상태 저장
+        var originalContent = document.querySelector('.carousel-inner').innerHTML;
+
+        function filterItems() {
+            // 사용자 입력을 기반으로 필터링합니다.
+            var input = document.querySelector('.searchTab input').value.toLowerCase();
+
+            // 모든 carousel-item 요소를 숨깁니다.
+            document.querySelectorAll('.carousel-item').forEach(function (item) {
+                item.style.display = 'none';
+            });
+
+            // 입력값이 포함된 song-src를 포함하는 carousel-item만 표시합니다.
+            document.querySelectorAll('.carousel-item .song-src').forEach(function (item) {
+                if (item.textContent.toLowerCase().includes(input)) {
+                    item.closest('.carousel-item').style.display = 'block';
+                }
+            });
+        }
+
+        function resetSearch() {
+            // 저장해둔 초기 상태로 복원합니다.
+            document.querySelector('.carousel-inner').innerHTML = originalContent;
+        }
+    </script>
+
+</body>
+
+</html>

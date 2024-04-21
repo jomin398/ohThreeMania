@@ -1,0 +1,34 @@
+.selfCrashWarn {
+  --blinkCol: #ff000099;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;
+  font-weight: bolder;
+}
+
+.selfCrashWarn .countDown {
+  min-height: 1.6em;
+}
+
+.blinkBshadow {
+  animation: blinkAnimation 1s infinite;
+}
+
+@keyframes blinkAnimation {
+
+  0%,
+  100% {
+    box-shadow: none;
+  }
+
+  50% {
+    box-shadow: 0px 0px 20px 20px var(--blinkCol) inset;
+  }
+}

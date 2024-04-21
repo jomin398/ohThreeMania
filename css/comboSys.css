@@ -1,0 +1,93 @@
+:root {
+    --combo-fontSize: 40px;
+}
+
+.comboWrap {
+    position: relative;
+    height: var(--combo-fontSize);
+}
+
+.comboWrap .combo {
+    top: -10px;
+    position: absolute;
+    animation: comboZoomIn .5s forwards;
+    font-size: var(--combo-fontSize);
+    font-weight: bolder;
+    padding: 0;
+    margin: 0;
+}
+
+.comboWrap.bottomUP,
+.combowrap.left {
+    height: calc(var(--combo-fontSize) *3.1);
+}
+
+.comboWrap.bottomUP .combo {
+    top: unset;
+}
+
+.comboWrap .combo.bottomUP:nth-child(1) {
+    bottom: 2em;
+}
+
+.comboWrap .combo.bottomUP:nth-child(2) {
+    bottom: 1.5em;
+}
+
+.comboWrap .combo.bottomUP:nth-child(3) {
+    bottom: 1em;
+}
+
+.comboWrap .combo.bottomUP:nth-child(4) {
+    bottom: 0.5em;
+}
+
+.comboWrap .combo.bottomUP:nth-child(5) {
+    bottom: 0;
+}
+
+.comboWrap .combo.left:nth-child(1) {
+    left: 0;
+    z-index: 1;
+}
+
+.comboWrap .combo.left:nth-child(2) {
+    left: 0.5em;
+    z-index: 2;
+}
+
+.comboWrap .combo.left:nth-child(3) {
+    left: 1em;
+    z-index: 3;
+}
+
+.comboWrap .combo.left:nth-child(4) {
+    left: 1.5em;
+    z-index: 4;
+}
+
+.comboWrap .combo.left:nth-child(5) {
+    left: 2em;
+    z-index: 5;
+}
+
+@keyframes comboFo {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes comboZoomIn {
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+}

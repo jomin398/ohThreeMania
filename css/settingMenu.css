@@ -1,0 +1,41 @@
+.settingMenu .nav.nav-tabs {
+    border: none;
+}
+
+.settingMenu #lanePosAuto:checked+label[for="lanePosAuto"]::after {
+    content: "자동 설정";
+}
+
+.settingMenu #lanePosAuto+label[for="lanePosAuto"]::after {
+    content: "수동 설정";
+}
+
+.settingMenu #giveUP:checked+label[for="giveUP"]::after {
+    content: "활성";
+}
+
+.settingMenu #giveUP+label[for="giveUP"]::after {
+    content: "비활성";
+}
+
+.settingMenu a {
+    text-decoration: none;
+}
+
+.settingMenu .form-label {
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width:1024px) {
+    .settingMenu .modal-dialog {
+        width: 100vw;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+    }
+
+    .settingMenu .modal-body {
+        display: flex;
+        flex-direction: row !important;
+    }
+}

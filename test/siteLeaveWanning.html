@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const APP = {
+            played: false
+        }
+        window.APP = APP;
+        $(window).on('beforeunload', function (e) {
+            e.returnValue = 'onbeforeunload';
+            if (window.APP.played) {
+
+                // 더미 요청으로 beforeunload 후 창열리는걸 예약함
+                var request = new XMLHttpRequest();
+                request.open("POST", "#", true);
+                request.onreadystatechange = () => {
+
+                    const baseurl = "./logout.html";
+
+                    const qs = `?userName=${encodeURIComponent('player')}`;
+                    //유저이름을 query문자열로 만들어서 붙침.
+                    window.open(`${baseurl + qs}`, '_blank');
+                };
+                request.send(null);
+            }
+            return 'onbeforeunload';
+        });
+    </script>
+</head>
+
+<body>
+    <a id="gotoLogout" href="./logout.html" target="_blank"></a>
+</body>
+
+</html>
