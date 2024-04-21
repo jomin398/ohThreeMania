@@ -1,6 +1,6 @@
 import { Beatmap } from '../../calculate/classes.mjs';
 import { ManiaBeatmap } from '../../calculate/mania-stable.mjs';
-import { ProgressManager } from "./progressManager.js";
+import { ProgressManager } from '../progressManager.js';
 import { parseOsuFile } from './osu.js';
 import JSZip from 'jszip';
 async function parseZipFile(zipFile) {
