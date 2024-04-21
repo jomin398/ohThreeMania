@@ -1,0 +1,186 @@
+@import url("./data/skin/font/gcfont.css");
+@import url("https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css");
+
+:root {
+    --miku-blue: #0EEADF;
+    --miku-pink: #ff9bc1;
+    --score-barColor: #f0f100;
+    --smallIcon: url('../data/skin/avatar1.png');
+}
+
+body,
+.resultInfo {
+    /* font-family: 'groovecoaster', 'Galmuri9'; */
+    font-family: 'Galmuri9';
+    letter-spacing: 0.1em;
+}
+
+/*miku textStyle*/
+.renderOverlayWrap .songTitle,
+.renderOverlayWrap .songTitleSub {
+    text-shadow: 0 0.5px #fff;
+    color: var(--miku-pink);
+}
+
+.songTitleSub {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #fff;
+}
+
+.scoreCont {
+    display: flex;
+    gap: 5px;
+    color: #fff;
+    font-size: 1.3rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 1em;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.judgeDispWrap {
+    z-index: 1;
+    position: absolute;
+    width: inherit;
+    display: grid;
+    top: calc(50% - 1em);
+    font-size: 1.5em;
+    color: #fff;
+    font-weight: bolder;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+}
+
+/*Note Css*/
+[id^="lane-"].Fast::before {
+    content: "Fast";
+}
+
+[id^="lane-"].Late::before {
+    content: "Late";
+}
+
+.songPgn {
+    position: relative;
+    width: inherit;
+}
+
+.songPgn .progress-bar {
+    background-color: var(--score-barColor);
+    box-shadow: inset 0px 0 5px 3px #ffffff;
+    border-radius: var(--bs-progress-border-radius);
+}
+
+#difficultySel .carousel-item {
+    border: 5px solid transparent;
+}
+
+.chrImage {
+    --posx: -196px;
+    --posy: 140px;
+    --skinBase: url('../data/skin/base.png');
+    --skinFace: url('../data/skin/face.png');
+}
+
+.chrImage .faceWrap {
+    --movingVac: 50px;
+}
+
+.chrImage .face {
+    top: calc(var(--posy) + 124px);
+    right: calc(var(--posx) + 249px);
+}
+
+.chrImage .face#f2 {
+    background-position: -67px -88px;
+}
+
+.chrImage .face#f3 {
+    background-position: -233px -88px;
+}
+
+.chrImage .face#f4 {
+    background-position: -399px -88px;
+}
+
+.chrImage .face#f5 {
+    background-position: -565px -88px;
+}
+
+.chrImage .mouth {
+    position: absolute;
+    width: 45px;
+    height: 25px;
+    bottom: 22px;
+    right: 28px;
+    overflow: hidden;
+    background-size: unset;
+}
+
+.chrImage .mouth#m1 {
+    background-position: -104.2px -333px;
+}
+
+.chrImage .mouth#m2 {
+    background-position: -284.2px -333px;
+}
+
+.chrImage .mouth#m3 {
+    background-position: -463.2px -333px;
+}
+
+.chrImage .mouth#m4 {
+    background-position: -643.2px -333px;
+}
+
+.chrImage .mouth#m5 {
+    background-position: -824.2px -333px;
+}
+
+
+.comboWrap .combo.c100 {
+    color: #4290ff;
+}
+
+.comboWrap .combo.c200,
+.comboWrap .combo.c300 {
+    color: #00FF00;
+}
+
+.comboWrap .combo.c300 {
+    color: #FFFF00;
+}
+
+.comboWrap .combo.c400,
+.comboWrap .combo.c500,
+.comboWrap .combo.c600 {
+    color: #ff4e6f;
+}
+
+.comboWrap .combo.c700,
+.comboWrap .combo.c800,
+.comboWrap .combo.c900 {
+    color: #c645b8;
+}
+
+.comboWrap .combo.c1000 {
+    color: #6563de;
+}
+
+.comboWrap .combo.c2000 {
+    color: #13106f;
+}
+
+@media screen and (max-width:1023px) {
+    .chrImage {
+        --skinBase: var(--smallIcon);
+        animation: flipinf 1.5s steps(1) infinite;
+    }
+}

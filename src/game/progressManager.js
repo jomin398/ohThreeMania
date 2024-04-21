@@ -33,7 +33,7 @@ export class BSProgress {
     }
 }
 
-export class PgMgr {
+export class ProgressManager {
     constructor(selector) {
         this.progressWrap = $(selector);
         this.processedCount = 0;

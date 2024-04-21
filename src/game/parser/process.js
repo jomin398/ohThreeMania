@@ -1,6 +1,6 @@
 import { Beatmap } from '../../calculate/classes.mjs';
 import { ManiaBeatmap } from '../../calculate/mania-stable.mjs';
-import { PgMgr } from '../PgMgr.js';
+import { ProgressManager } from "./progressManager.js";
 import { parseOsuFile } from './osu.js';
 import JSZip from 'jszip';
 async function parseZipFile(zipFile) {
@@ -13,7 +13,7 @@ async function parseZipFile(zipFile) {
 * @param {Object} zipFile
 * @param {File[]} array 
 * @param {ImageLoader} ImgLoader 
-* @param {PgMgr} progressMgr 
+* @param {ProgressManager} progressMgr 
 * @returns {{zip:Object,data:ManiaBeatmap,artist:String}[]}
 */
 export async function process(zipFile, array, ImgLoader, progressMgr) {

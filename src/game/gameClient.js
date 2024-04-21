@@ -5,7 +5,7 @@ import Skin from "./skin.js";
 import { booting } from "./booting.js";
 import { titleScreen } from "./titleScreen.js";
 import { initCharts, songChangeHandler } from '../input/level.js';
-import { PgMgr } from "./PgMgr.js";
+import { ProgressManager } from "./progressManager.js";
 import { default as PGLayout } from "./layouts/pgLayout.js";
 import ChrAnimator from "./chrAnimator.js";
 import settingMenu from "./layouts/settingMenu.js";
@@ -183,8 +183,8 @@ export default class gameClient {
     }
     async main() {
         await titleScreen.call(this, this.skin);
-        /** @type {PgMgr} */
-        this.progressManager = new PgMgr("body .container.progressWrap");
+        /** @type {ProgressManager} */
+        this.progressManager = new ProgressManager("body .container.progressWrap");
 
         //for coloring or voice.
         await skinCssInit(this.skin);

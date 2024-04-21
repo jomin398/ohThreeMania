@@ -1,6 +1,6 @@
 import { findDifficultyCol } from "../../calculate/findDifficultyCol.js";
 import { msToTime, padNumber } from "../../utils.js";
-import { BSProgress } from "../PgMgr.js";
+import { BSProgress } from "../progressManager.js";
 import { GameEngine } from "../engine.js";
 import DrawScoreGFX from "../judge/drawScoreGFX.js";
 import { getPlayRank } from "../judge/playRank.js";

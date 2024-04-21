@@ -2,12 +2,13 @@ import { padNumber, findLatestArtistElm, sleep, getIsMobile } from '../utils.js'
 import { updateLvPreview } from './updateLvPreview.js';
 import { process } from '../game/parser/process.js';
 import gameClient from '../game/gameClient.js';
+import { ProgressManager } from '../game/progressManager.js';
 
 
 export async function initCharts(progressManager, uploadFiles, imgLoader) {
     /**
      *  @constant
-     * @type {PgMgr} 
+     * @type {ProgressManager} 
     */
     const progressMgr = progressManager;
     const files = uploadFiles;

@@ -41,7 +41,7 @@ export default class SkinParser {
     }
 
     async fromString() {
-        const str = await (await fetch(this.#basePath + "skin.ini")).text();
+        const str = await (await fetch(this.#basePath + "seting.ini")).text();
         const lines = str.split(/\r?\n/g);
 
         let currHeader = null;

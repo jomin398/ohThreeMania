@@ -1,0 +1,1914 @@
+{
+    "tips": [
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                1000
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        }
+    ],
+    "select": [
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                200
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                400
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                500
+            ]
+        }
+    ],
+    "info": [
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    2
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                500
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth",
+                "moveChr"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    5
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                500
+            ]
+        }
+    ],
+    "levelStart": [
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                200
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                500
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        }
+    ],
+    "levelStart2": [
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                300
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                200
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    2
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth",
+                "moveChr"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    5
+                ],
+                [
+                    1
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                500
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    3
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    5
+                ]
+            ]
+        },
+        {
+            "action": "sleep",
+            "args": [
+                100
+            ]
+        },
+        {
+            "action": [
+                "face",
+                "mouth"
+            ],
+            "args": [
+                [
+                    1
+                ],
+                [
+                    2
+                ]
+            ]
+        }
+    ]
+}
