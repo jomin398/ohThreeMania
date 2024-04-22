@@ -92,6 +92,7 @@
 @media screen and (max-width:426px) {
     .renderCont {
         width: var(--device-width);
+        height: 900px;
     }
 
     .renderOverlay {
@@ -122,5 +123,9 @@
 
     .view3d {
         transform: rotateX(6deg) translateY(calc(100vh* -0.18));
+    }
+
+    .renderCont .judgeDispWrap {
+        font-size: 1.5em;
     }
 }

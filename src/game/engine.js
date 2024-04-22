@@ -169,10 +169,11 @@ export class GameEngine {
 	}
 
 	async #startEngine() {
-		console.log(this.keyInputMgr.keyBindings)
+		const isMobile = navigator.userAgentData.mobile;
+		if (isMobile) this.client.fScreenMgr.toggle();
 		if ($(".renderCont .skip.d-none").length != 1)
 			$(".renderCont .skip").addClass('d-none');
-		const isMobile = navigator.userAgentData.mobile;
+
 		const stats = new Stats(isMobile ? null : {
 			canvas: {
 				cssText: 'width:160px;height:96px;font-size:14px;cursor:move;',
@@ -222,7 +223,7 @@ export class GameEngine {
 		this.musicPlayer.pause();
 		this.agent.result.update(this);
 		this.keyInputMgr.removeKeyListener("gotoSetting");
-        this.keyInputMgr.removeKeyListener("pauseMenu");
+		this.keyInputMgr.removeKeyListener("pauseMenu");
 		this.agent.result.show();
 	}
 	goToResult() {

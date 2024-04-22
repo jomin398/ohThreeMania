@@ -244,6 +244,7 @@
         flex-direction: column;
     }
 
+    .resultInfo .headerInfoWrap,
     .resultInfo #nav-resultMain,
     .resultInfo #nav-resultDetails {
         width: 100%;

@@ -18,6 +18,7 @@ import setRangeTooltip from "../input/setRangeTooltip.js";
 import mediaPlayer from "./mediaPlayer.js";
 import KeyboardInput from "../input/keyboard.js";
 import BSToastManager from "../bsToastManager.js";
+import fullScreenMgr from "./fullScreenMgr.min.js";
 class SearchEngine {
 
     constructor() {
@@ -68,7 +69,7 @@ class SearchEngine {
         $($('.songDiffList .carousel-item').get(0)).addClass("active");
         this.selectDefaultSong();
     }
-    onSongSelect(){
+    onSongSelect() {
         $('.songDiffList .carousel-inner').html(this.#originSongContent);
         this.#initCountHeader();
         $($('.songDiffList .carousel-item').get(0)).addClass("active");
@@ -99,8 +100,7 @@ export default class gameClient {
         this.chrMgr = new ChrAnimator();
         this.searchEngine = new SearchEngine();
         this.searchEngine.selectDefaultSong = () => this.selectDefaultSong();
-
-
+        this.fScreenMgr = new fullScreenMgr();
         this.selSongNumber = 0;
         this.selSongDiff = 0;
         this.previewMusic = new mediaPlayer("main audio#previewMusic", true);
@@ -132,7 +132,8 @@ export default class gameClient {
             this.keyInputMgr.removeKeyListener("pauseMenu");
             this.agent.engine.quit();
             this.agent.engine = null;
-        }
+        };
+        if (this.isMob) this.fScreenMgr.toggle();
         this.previewMusic.isPreview = true;
         this.searchEngine.onSongSelect();
         let lastElm = findLatestArtistElm(this.selSongNumber, this.selSongDiff, this.charts);
@@ -207,6 +208,10 @@ export default class gameClient {
             .then(() => filePage.uploaded)
             .then(async (uploadData) => {
                 this.uploadFiles = uploadData;
+                if (this.isMob && !document.fullscreenElement) {
+                    console.log('requesting fullScreen');
+                    document.documentElement.requestFullscreen();
+                }
                 await this.skin.init();
                 await booting.call(this); //show Logos;
                 $("body").append(PGLayout, settingMenu, canvasStr);
