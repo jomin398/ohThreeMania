@@ -9,12 +9,13 @@ export default class Playfield {
     lanes = [];
     judgement;
     noteQueue;
-    constructor(speed, judgement, scoreboard) {
+    constructor(agent, speed, judgement, scoreboard) {
         this.baseSpeed = speed;
         //this.skin = skin;
         this.lanes = [];
         this.judgement = judgement;
         this.scoreboard = scoreboard;
+        this.agent = agent;
     }
     #autoPlayMode = false;
     #finshTime = null;

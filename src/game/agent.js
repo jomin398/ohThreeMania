@@ -214,7 +214,7 @@ export default class gameAgent {
     #setField() {
         const scBoard = new Scoreboard(setUiState, this);
         // scBoard.maxNotes = this.chart.hitObjects.length;
-        this.field = new Playfield(this.#baseSpeed, new EtternaJudgement(4), scBoard);
+        this.field = new Playfield(this, this.#baseSpeed, new EtternaJudgement(4), scBoard);
         this.field.autoPlay = this.userConfigs.autoPlay;
 
     }
@@ -252,7 +252,7 @@ export default class gameAgent {
         this.selSongDiff = diffIndex;
         if (this.previewMusic) this.previewMusic.pause();
         if (this.charts[this.selSongNumber][this.selSongDiff].data.error) {
-            this.client.toastMgr.showToast("선택한 곡에 오류가 있어 불가능 합니다.",-1)
+            this.client.toastMgr.showToast("선택한 곡에 오류가 있어 불가능 합니다.", -1)
             return;
         }
         this.#zip = this.charts[this.selSongNumber][this.selSongDiff].zip;
