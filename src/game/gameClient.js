@@ -17,7 +17,7 @@ import gameAgent from "./agent.js";
 import setRangeTooltip from "../input/setRangeTooltip.js";
 import mediaPlayer from "./mediaPlayer.js";
 import KeyboardInput from "../input/keyboard.js";
-import BSToastManager from "../bsToastManager.js";
+import BSToastManager from "../bsToastManager.min.js";
 import fullScreenMgr from "./fullScreenMgr.min.js";
 class SearchEngine {
 
@@ -80,7 +80,6 @@ class SearchEngine {
         this.#songItems = $('.songDiffList .carousel-item');
         this.#originSongContent = $('.songDiffList .carousel-inner').html();
         this.#placeHolderStr = this.searchBox.attr('placeholder');
-        console.log(this.#tab, this.#tab.find('#searchBtn'))
         this.#tab.on('click', '#searchBtn', ev => this.#filterItems.call(this, ev));
         this.#tab.on('click', '#searchResetBtn', ev => {
             this.restore.call(this);
@@ -133,7 +132,7 @@ export default class gameClient {
             this.agent.engine.quit();
             this.agent.engine = null;
         };
-        if (this.isMob) this.fScreenMgr.toggle();
+        if (this.isMob) this.fScreenMgr.exit();
         this.previewMusic.isPreview = true;
         this.searchEngine.onSongSelect();
         let lastElm = findLatestArtistElm(this.selSongNumber, this.selSongDiff, this.charts);
@@ -208,14 +207,12 @@ export default class gameClient {
             .then(() => filePage.uploaded)
             .then(async (uploadData) => {
                 this.uploadFiles = uploadData;
-                if (this.isMob && !document.fullscreenElement) {
-                    console.log('requesting fullScreen');
-                    document.documentElement.requestFullscreen();
-                }
+
                 await this.skin.init();
                 await booting.call(this); //show Logos;
                 $("body").append(PGLayout, settingMenu, canvasStr);
                 this.toastMgr = new BSToastManager();
+                if (this.isMob) this.fScreenMgr.set().catch(() => { this.toastMgr.showToast("요청 실패", "전체화면 요청", -1) });
                 this.keyInputMgr.toastManager = this.toastMgr;
 
                 this.keyInputMgr.init();

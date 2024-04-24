@@ -170,7 +170,7 @@ export class GameEngine {
 
 	async #startEngine() {
 		const isMobile = navigator.userAgentData.mobile;
-		if (isMobile) this.client.fScreenMgr.toggle();
+		if (isMobile) this.client.fScreenMgr.set().catch(() => { this.client.toastMgr.showToast("전체화면 요청을 실패하였습니다.", -1) });
 		if ($(".renderCont .skip.d-none").length != 1)
 			$(".renderCont .skip").addClass('d-none');
 

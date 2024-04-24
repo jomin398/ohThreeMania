@@ -92,7 +92,6 @@
 @media screen and (max-width:426px) {
     .renderCont {
         width: var(--device-width);
-        height: 900px;
     }
 
     .renderOverlay {

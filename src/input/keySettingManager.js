@@ -1,4 +1,4 @@
-import BSToastManager from "../bsToastManager.js";
+import BSToastManager from "../bsToastManager.min.js";
 
 export default class KeySettingManager {
     constructor() {
@@ -34,11 +34,11 @@ export default class KeySettingManager {
     }
 
     #registerKey(buttonId) {
-        this.toastManager.showToast(`${buttonId} 등록을 시작합니다. 원하시는 키를 입력해주세요.`, 0);
+        this.toastManager.showToast(`${buttonId} 등록을 시작합니다. 원하시는 키를 입력해주세요.`, "키 등록", 0);
         $(document).off('keydown').on('keydown', (event) => {
             this.keySetting[buttonId] = event.key;
             this.#getKeySettingElmObj().find(`#${buttonId}`).text(`(${event.key})`); // 버튼 텍스트 업데이트
-            this.toastManager.showToast(`${buttonId}에 ${event.key}가 등록되었습니다.`, 1);
+            this.toastManager.showToast(`${buttonId}에 ${event.key}가 등록되었습니다.`, "키 등록", 1);
             $(document).off('keydown');
         });
     }
@@ -77,7 +77,7 @@ export default class KeySettingManager {
     #saveKeys() {
         this.#getKeySettingElmObj().find('#keyButtons .btn').removeClass('btn-warning'); // 하이라이트 제거
         if (Object.entries(this.keySetting).length === 0) {
-            this.toastManager.showToast(`모든 키가 미등록 되어 있습니다.`, -1);
+            this.toastManager.showToast(`모든 키가 미등록 되어 있습니다.`, "키 등록", -1);
             return;
         }
 
@@ -87,7 +87,7 @@ export default class KeySettingManager {
             duplicates.forEach(dup => {
                 message += `${dup.buttonId}에 ${dup.key} `;
             });
-            this.toastManager.showToast(message, -1);
+            this.toastManager.showToast(message, "키 등록", -1);
             this.#highlightDuplicates();
             return;
         } else if (Object.entries(this.keySetting).length === 4) {
@@ -95,7 +95,7 @@ export default class KeySettingManager {
             Object.entries(this.keySetting).forEach(([key, val]) => {
                 message += `${key}에 "${val}", `;
             });
-            this.toastManager.showToast(message, 1);
+            this.toastManager.showToast(message, "키 등록", 1);
             if (this.resolveFn) this.resolveFn(this.keySetting);
         }
     }

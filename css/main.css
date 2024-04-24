@@ -8,19 +8,11 @@ body {
 
 body {
   color: #fff;
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   background-color: #000;
   perspective: 100px;
   overflow-y: auto;
-}
-
-.fillScreen {
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 #bootingLogos {
@@ -79,6 +71,20 @@ body {
 
 main {
   perspective: inherit;
+}
+
+@media screen and (max-width:426px) {
+
+  body,
+  html,
+  main {
+    height: 900px;
+  }
+
+  main {
+    max-height: 900px;
+    overflow: auto;
+  }
 }
 
 @media screen and (min-width:426px) {

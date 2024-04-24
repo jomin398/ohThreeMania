@@ -97,7 +97,6 @@ export default class gameAgent {
         this.field.update(delta, this.keyInputMgr.getPressedKeys());
     }
     async #regGameEngine() {
-        console.log(this.chart);
         if (this.userConfigs.view3d) {
             $(".renderCont").addClass("view3d")
         }
@@ -174,8 +173,6 @@ export default class gameAgent {
     escPressed = null;
     async main() {
         this.engine = null;
-        // this.keyInputMgr = new KeyboardInput();
-        // this.keyInputMgr.init();
         this.keyInputMgr.addKeyListener("gotoSetting", (e) => {
             if (e.key != "Escape") return;
             if (e.key == "Escape" && e.type === "keydown") {
@@ -252,7 +249,7 @@ export default class gameAgent {
         this.selSongDiff = diffIndex;
         if (this.previewMusic) this.previewMusic.pause();
         if (this.charts[this.selSongNumber][this.selSongDiff].data.error) {
-            this.client.toastMgr.showToast("선택한 곡에 오류가 있어 불가능 합니다.", -1)
+            this.client.toastMgr.showToast("선택한 곡에 오류가 있어 불가능 합니다.", null, -1)
             return;
         }
         this.#zip = this.charts[this.selSongNumber][this.selSongDiff].zip;
