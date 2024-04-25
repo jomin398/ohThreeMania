@@ -64,7 +64,7 @@ export function appendSongs(context) {
                 transformTag(artist).split(",").map(e => { bmpArtistSplitedGroup.add(e) });
                 bmpArtistGroup.add(artist);
             } catch (error) {
-                //console.log(error);
+                console.log(error);
                 lvListTemplates.push(genLevelListTemplate({ songTitle, difficulty: 0, sr: 0, color: "#000", dur: 0, songNum: chartGroupIndex, difficultyNum: i, convertedFrom: null, error }));
                 bmpSourceGroup.add("UnSorted");
                 // lvListTemplates.push(lvListTemplate);

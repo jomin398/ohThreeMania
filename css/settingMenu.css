@@ -10,12 +10,22 @@
     content: "수동 설정";
 }
 
-.settingMenu #giveUP:checked+label[for="giveUP"]::after {
+.settingMenu #giveUP:checked+label[for="giveUP"]::after,
+.settingMenu #fps:checked+label[for="fps"]::after {
     content: "활성";
 }
 
-.settingMenu #giveUP+label[for="giveUP"]::after {
+.settingMenu #notehaptic:checked+label[for="notehaptic"]::after {
+    content: "반응";
+}
+
+.settingMenu #giveUP+label[for="giveUP"]::after,
+.settingMenu #fps+label[for="fps"]::after {
     content: "비활성";
+}
+
+.settingMenu #notehaptic+label[for="notehaptic"]::after {
+    content: "미반응";
 }
 
 .settingMenu a {
@@ -24,6 +34,12 @@
 
 .settingMenu .form-label {
     margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width:1023px) {
+    .settingMenu #nav-input-tab {
+        display: none;
+    }
 }
 
 @media screen and (min-width:1024px) {

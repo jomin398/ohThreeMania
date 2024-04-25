@@ -52,6 +52,10 @@
     justify-content: center;
 }
 
+.renderOverlay .headerInfo {
+    background-color: #000;
+}
+
 .renderCont canvas {
     width: inherit;
     height: inherit;
@@ -66,13 +70,12 @@
     justify-content: space-around;
 }
 
-.touchBtn {
+.touchWrap .touchBtn {
     width: 22vw;
     height: 22vw;
-    border: 1px solid black;
 }
 
-.view3d .touchBtn {
+.view3d .touchWrap .touchBtn {
     width: 25vw;
     height: 23vw;
 }
@@ -80,6 +83,11 @@
 .statJS {
     position: relative !important;
     z-index: 1 !important;
+    display: none;
+}
+
+.statJS.active {
+    display: initial;
 }
 
 .renderCont .skip {

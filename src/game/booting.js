@@ -50,7 +50,7 @@ export function booting() {
     $(".container").toggleClass("d-none");
     $("body").append(`<audio id="cv"><audio/>`, logoLayout);
     that.cvPlayer = new mediaPlayer('body audio#cv');
-    await showLogos("./data/skin/", VoiceList.boot.concat(VoiceList.logo), that.cvPlayer);
+    await showLogos(that.skin.basePath, VoiceList.boot.concat(VoiceList.logo), that.cvPlayer);
     // $(".container").toggleClass("d-none");
     r(1);
   });

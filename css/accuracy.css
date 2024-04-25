@@ -4,7 +4,7 @@
     color: #fff;
     display: grid;
     grid-template-columns: min-content 1fr;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 0 5px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -13,20 +13,6 @@
     padding: 5px;
 }
 
-._accCont {
-
-    grid-template-areas:
-        "label_comb combo"
-        "label_acc accuracy"
-        "label_maxcomb maxcomb"
-        "label_noteAcc noteAcc"
-        "label_perfect perfect"
-        "label_great great"
-        "label_good good"
-        "label_miss miss"
-        "label_fast fast"
-        "label_late late";
-}
 
 
 .accCont .label_maxcomb {

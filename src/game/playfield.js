@@ -1,9 +1,9 @@
+import gameAgent from "./agent.js";
 import { Lane } from "./lane.js";
 import { laneJudgeUpdate } from "./scBoard.js";
 
 export default class Playfield {
     scoreboard;
-
     baseSpeed;
     skin;
     lanes = [];
@@ -11,10 +11,10 @@ export default class Playfield {
     noteQueue;
     constructor(agent, speed, judgement, scoreboard) {
         this.baseSpeed = speed;
-        //this.skin = skin;
         this.lanes = [];
         this.judgement = judgement;
         this.scoreboard = scoreboard;
+        /** @type {gameAgent?} */
         this.agent = agent;
     }
     #autoPlayMode = false;
@@ -43,12 +43,10 @@ export default class Playfield {
             return isInRange(st, st + d) || // note within judge
                 (n.isLn && isInRange(st, (et != null ? et : 0))); // note and ln end within judge
         };
-
-        //console.log(this.lanes[0].lastNoteHitIndex);
         this.lanes.forEach((l, i) => {
             if (this.#autoPlayMode && l.currentNote) {
                 laneState[i] = autoPlay(l.currentNote);
-                laneJudgeUpdate(null, i);
+                laneJudgeUpdate(null, i, this.agent.userConfigs);
             }
             l.update(time, laneState[i], this.baseSpeed, this.judgement, this.scoreboard, i);
             //detect chart is Finished.
@@ -78,7 +76,6 @@ export default class Playfield {
         this.scoreboard.maxNotes = noteCount;
         this.scoreboard.maxLongNotes = longNoteCount;
         this.scoreboard.totalNotes = noteCount + longNoteCount;
-        // this.scoreboard.longNoteCount = longNoteCount;
         for (let i = 0; i < chart.notes.length; i++) {
             let note = chart.notes[i];
             let noteTime = note.endTime ? note.endTime : note.startTime;
@@ -87,5 +84,4 @@ export default class Playfield {
             }
         }
     }
-
 }

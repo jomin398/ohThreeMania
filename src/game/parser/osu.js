@@ -1,7 +1,7 @@
 import { BeatmapDecoder, BeatmapEncoder } from "../../calculate/parsers.mjs";
 import { BeatmapCalculator } from "../../calculate/index.js";
 import { ManiaRuleset } from "../../calculate/mania-stable.mjs";
-import { ImageLoader } from "../../input/ImageLoader.js";
+import ImageLoader from "../../input/imageloader.min.js";
 import { Beatmap } from "../../calculate/classes.mjs";
 
 /**

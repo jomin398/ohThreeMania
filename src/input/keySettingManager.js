@@ -1,43 +1,29 @@
-import BSToastManager from "../bsToastManager.min.js";
-
 export default class KeySettingManager {
     constructor() {
-        /**
-         * @type {Object<string,string>}
-         */
         this.keySetting = {}; // 키 저장
-        /**
-         * @type {BSToastManager?}
-         */
         this.toastManager = null;
-
     }
+
     registSettingEdit() {
-        this.#getKeySettingElmObj().find('#keyButtons .btn').on('click', (e) => {
-            const buttonId = e.currentTarget.id;
-            $(`#${buttonId}`).removeClass('btn-warning');
-            this.#registerKey(buttonId);
-        });
+        const keySettingElm = $('.keyBindSetting');
+        keySettingElm.find('#keyButtons .btn').on('click', e => this.#registerKey(e.currentTarget.id));
+        keySettingElm.find('#saveButton').on('click', () => this.#saveKeys());
+    }
 
-        this.#getKeySettingElmObj().find('#saveButton').on('click', () => this.#saveKeys());
-    }
-    #getKeySettingElmObj() {
-        return $('.keyBindSetting');
-    }
     showRegistedKeys() {
-        this.#getKeySettingElmObj().find('#keyButtons .btn').each((_, element) => {
-            const buttonId = element.id;
-            if (this.keySetting[buttonId]) {
-                $(`#${buttonId}`).text(`(${this.keySetting[buttonId]})`); // 이미 등록된 키가 있으면 버튼 텍스트 업데이트
+        const keySettingElm = $('.keyBindSetting');
+        keySettingElm.find('#keyButtons .btn').each((_, element) => {
+            if (this.keySetting[element.id]) {
+                $(element).text(`(${this.keySetting[element.id]})`);
             }
         });
     }
 
     #registerKey(buttonId) {
         this.toastManager.showToast(`${buttonId} 등록을 시작합니다. 원하시는 키를 입력해주세요.`, "키 등록", 0);
-        $(document).off('keydown').on('keydown', (event) => {
+        $(document).off('keydown').on('keydown', event => {
             this.keySetting[buttonId] = event.key;
-            this.#getKeySettingElmObj().find(`#${buttonId}`).text(`(${event.key})`); // 버튼 텍스트 업데이트
+            $('.keyBindSetting').find(`#${buttonId}`).text(`(${event.key})`);
             this.toastManager.showToast(`${buttonId}에 ${event.key}가 등록되었습니다.`, "키 등록", 1);
             $(document).off('keydown');
         });
@@ -47,69 +33,42 @@ export default class KeySettingManager {
         let duplicates = [];
         let keyCounts = {};
 
-        Object.keys(this.keySetting).forEach(buttonId => {
-            const key = this.keySetting[buttonId];
-            if (!keyCounts[key]) {
-                keyCounts[key] = [];
-            }
+        Object.entries(this.keySetting).forEach(([buttonId, key]) => {
+            keyCounts[key] = keyCounts[key] || [];
             keyCounts[key].push(buttonId);
         });
 
-        Object.keys(keyCounts).forEach(key => {
-            if (keyCounts[key].length > 1) {
-                keyCounts[key].forEach(buttonId => {
-                    duplicates.push({ buttonId, key });
-                });
-            }
+        Object.values(keyCounts).forEach(ids => {
+            if (ids.length > 1) duplicates.push(...ids.map(buttonId => ({ buttonId, key: this.keySetting[buttonId] })));
         });
 
         return duplicates;
     }
+
     #highlightDuplicates() {
         const duplicates = this.#findDuplicates();
-        this.#getKeySettingElmObj().find('#keyButtons .btn').each((_, element) => {
-            const buttonId = element.id;
-            const isDuplicate = duplicates.some(dup => dup.buttonId === buttonId);
-            $(element).toggleClass('btn-warning', isDuplicate);
+        $('.keyBindSetting').find('#keyButtons .btn').each((_, element) => {
+            $(element).toggleClass('btn-warning', duplicates.some(dup => dup.buttonId === element.id));
         });
     }
 
     #saveKeys() {
-        this.#getKeySettingElmObj().find('#keyButtons .btn').removeClass('btn-warning'); // 하이라이트 제거
-        if (Object.entries(this.keySetting).length === 0) {
+        $('.keyBindSetting').find('#keyButtons .btn').removeClass('btn-warning');
+        if (!Object.keys(this.keySetting).length) {
             this.toastManager.showToast(`모든 키가 미등록 되어 있습니다.`, "키 등록", -1);
             return;
         }
 
         const duplicates = this.#findDuplicates();
         if (duplicates.length) {
-            let message = "중복된 키가 있습니다: ";
-            duplicates.forEach(dup => {
-                message += `${dup.buttonId}에 ${dup.key} `;
-            });
-            this.toastManager.showToast(message, "키 등록", -1);
+            this.toastManager.showToast(`중복된 키가 있습니다: ${duplicates.map(dup => `${dup.buttonId}에 ${dup.key}`).join(' ')}`, "키 등록", -1);
             this.#highlightDuplicates();
-            return;
-        } else if (Object.entries(this.keySetting).length === 4) {
-            let message = "모든 키가 성공적으로 등록되었습니다: ";
-            Object.entries(this.keySetting).forEach(([key, val]) => {
-                message += `${key}에 "${val}", `;
-            });
-            this.toastManager.showToast(message, "키 등록", 1);
+        } else {
+            this.toastManager.showToast(`모든 키가 성공적으로 등록되었습니다: ${Object.entries(this.keySetting).map(([key, val]) => `${key}에 "${val}"`).join(', ')}`, "키 등록", 1);
             if (this.resolveFn) this.resolveFn(this.keySetting);
         }
     }
-    /** 
-     * @private
-     * @callback
-     * @type {(string)=>string?}
-     */
+
     resolveFn = null;
-    /**
-     * fires at on save btn pressed.
-     * @type {Promise<{[x: string]: string}>?}
-     */
-    savePromise = new Promise(r => {
-        this.resolveFn = r;
-    });
+    savePromise = new Promise(r => this.resolveFn = r);
 };

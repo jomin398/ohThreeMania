@@ -1,23 +1,31 @@
 import { padNumber, findLatestArtistElm, sleep, getIsMobile } from '../utils.js';
-import { updateLvPreview } from './updateLvPreview.js';
+import updateLvPreview from './updateLvPreview.min.js';
 import { process } from '../game/parser/process.js';
 import gameClient from '../game/gameClient.js';
 import { ProgressManager } from '../game/progressManager.js';
 
-
-export async function initCharts(progressManager, uploadFiles, imgLoader) {
+/**
+ * 
+ * @param {gameClient} client 
+ * @returns 
+ */
+export async function initCharts(client) {
     /**
      *  @constant
      * @type {ProgressManager} 
     */
-    const progressMgr = progressManager;
-    const files = uploadFiles;
+    const progressMgr = client.progressManager;
+    const files = client.uploadFiles;
     //레벨(보면)들 로딩
-    const charts = await Promise.all(Array.from(files).map((file, _idx, arr) => process(file, arr, imgLoader, progressMgr)));
+    const charts = await Promise.all(Array.from(files).map((file, _idx, arr) => process(file, arr, client.imgLoader, progressMgr)))
+        .catch(() => {
+            client.toastMgr.showToast(`osz 파일을 로딩하는데에 실패했습니다.`, "initCharts", -1, false);
+        });
     await sleep(1000);
     progressMgr.reset();
+
     // 각 최상위 배열의 원소에 대해 반복하며 내부 배열을 starRate 기준으로 정렬
-    charts.forEach(group => {
+    if (charts) charts.forEach(group => {
         if (!group) return;
         group.sort((a, b) => a.data.difficulty.starRate - b.data.difficulty.starRate);
     });
@@ -51,7 +59,6 @@ function updateGlobalMedia(option) {
  * @param {boolean} isDiffChange 난이도 변경 여부
  */
 export function songChangeHandler(event, client, isDiffChange) {
-    // console.log(isDiffChange ? "diffChange" : "songListChange");
     const { imgLoader, charts } = client;
     client.previewMusic.pause();
     let songSelNum = 0;
@@ -65,15 +72,10 @@ export function songChangeHandler(event, client, isDiffChange) {
         diffSelNum = parseInt(s[1] ?? 0);
         console.log(1)
         findLatestArtistElm(client.selSongNumber, client.selSongDiff, charts)?.classList.toggle('active');
-        if (getIsMobile()) {
-            Array.from($(event.target).offsetParent().find("label")).forEach(e => { $(e).removeAttr("style") });
-        } else {
-            //Array.from($(event.target).offsetParent().find("label")).forEach(e => { $(e).find(".innerWrap")[0].style.border = "2px solid transparent"; });
-        }
+        if (getIsMobile()) Array.from($(event.target).offsetParent().find("label")).forEach(e => { $(e).removeAttr("style") });
 
         thisSongElm = $(`.songDiffList .carousel-item#s_${songSelNum}`);
         idx = thisSongElm.index() + 1;
-        //client.selSongDiff = parseInt($(event.target).attr("id").replace(`btn-check-${client.selSongNumber}_`, ''));
     }
     //곡 변경
     else if (event && event.to) {
@@ -83,11 +85,8 @@ export function songChangeHandler(event, client, isDiffChange) {
         thisSongElm = $(event.relatedTarget);
         idx = thisSongElm.index() + 1;
         findLatestArtistElm(client.selSongNumber, client.selSongDiff, charts)?.classList.remove('active');
-    } else {
-        songSelNum = thisSongElm?.attr('id').replace("s_", "") ?? 0;
-        //songSelNum
-        //diffSelNum
-    }
+    } else songSelNum = thisSongElm?.attr('id').replace("s_", "") ?? 0;
+
     // 곡이나 난이도 변경에 따른 새로운 선택 반영
     $("#currentSongNumber").text(padNumber(idx, 3));
     console.log(songSelNum, diffSelNum);

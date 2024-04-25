@@ -1,5 +1,6 @@
 import { Beatmap } from '../../calculate/classes.mjs';
 import { ManiaBeatmap } from '../../calculate/mania-stable.mjs';
+import ImageLoader from '../../input/imageloader.min.js';
 import { ProgressManager } from '../progressManager.js';
 import { parseOsuFile } from './osu.js';
 import JSZip from 'jszip';
@@ -8,6 +9,9 @@ async function parseZipFile(zipFile) {
     await zip.loadAsync(zipFile);
     return zip;
 }
+
+
+
 /**
 * process the osu files in .osz(.zip) file.
 * @param {Object} zipFile
@@ -59,8 +63,14 @@ export async function process(zipFile, array, ImgLoader, progressMgr) {
     const parsedData = (await Promise.all(osuFilePromises)).filter(Boolean);
     progressMgr.processedCount++;
     totalProgress = progressMgr.processedCount / array.length;
-    if (!parsedData[0].error)
+    if (!parsedData[0]) throw new class ChecKBeatmapError extends Error {
+        constructor() {
+            super('Beatmap Checking Error');
+            this.name = "ChecKBeatmapError";
+        }
+    };
+    if (!parsedData[0]?.error && parsedData[0].data)
         update(null, null, parsedData[0].data.metadata.titleUnicode, totalProgress);
-
+   
     return parsedData;
 }

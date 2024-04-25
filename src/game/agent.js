@@ -51,9 +51,13 @@ export default class gameAgent {
         fastLateMS: true,
         selfCrash: true,
         autoPlay: false,
-        view3d: false
+        view3d: false,
+        fps: false,
+        notehaptic: true,
+        notehapticLifeTime: 100,
+        noteBaseSpeed: 35 //15;
     }
-    #baseSpeed = .0035; //.0015;
+    #baseSpeed = .0035;
     #settingScreen = {
         popuped: false,
         toggle: () => {
@@ -97,9 +101,11 @@ export default class gameAgent {
         this.field.update(delta, this.keyInputMgr.getPressedKeys());
     }
     async #regGameEngine() {
+        $(".renderCont").removeClass("view3d");
         if (this.userConfigs.view3d) {
-            $(".renderCont").addClass("view3d")
+            $(".renderCont").addClass("view3d");
         }
+
         $(".renderOverlay .songTitle").text(this.chart.metadata.titleUnicode);
         $(".renderOverlay .songTitleSub").text(this.chart.metadata.titleUnicode);
         this.skin.playSfx = this.userConfigs.playSfx;
@@ -179,7 +185,7 @@ export default class gameAgent {
                 if (!this.engine) this.#settingScreen.toggle();
             }
         });
-        if (this.client.isMob) $(".songSelectWrap .settingBtn").toggleClass("d-none");
+        if (this.client.isMob) $(".songSelectWrap .settingBtn").removeClass("d-none");
         $(".songSelectWrap .settingBtn").on('click', () => this.#settingScreen.toggle());
         $(".renderOverlay .pauseBtn").on('click', () => this.engine.pauseMenu.popup());
         if ($(".renderCont canvas").length) $(".renderCont canvas").remove();
@@ -210,15 +216,12 @@ export default class gameAgent {
     }
     #setField() {
         const scBoard = new Scoreboard(setUiState, this);
-        // scBoard.maxNotes = this.chart.hitObjects.length;
-        this.field = new Playfield(this, this.#baseSpeed, new EtternaJudgement(4), scBoard);
+        this.field = new Playfield(this, this.userConfigs.noteBaseSpeed / 1e4, new EtternaJudgement(4), scBoard);
         this.field.autoPlay = this.userConfigs.autoPlay;
-
     }
     async #setSkin(laneCont) {
         this.skin.laneSkinKey = laneCont;
         this.field.skin = await this.skin.applyNoteSkin();
-        //this.#field.setNoteQueue();
     }
     async #gameStart() {
         console.log("songLoading...")
@@ -253,14 +256,11 @@ export default class gameAgent {
             return;
         }
         this.#zip = this.charts[this.selSongNumber][this.selSongDiff].zip;
-
-
         this.chrMgr.executeScript(this.chrMgr.dialogueList.levelStart);
-        await this.client.cvPlayer.init("./data/skin/" + VoiceList.songStart);
+        await this.client.cvPlayer.init(this.skin.basePath + VoiceList.songStart);
         await this.client.cvPlayer.play();
         this.chrMgr.removeEyeBlinking();
         this.#resetSelectMenu(this.isRetryed);
-        // return true;
         this.#gameStart();
     }
 }

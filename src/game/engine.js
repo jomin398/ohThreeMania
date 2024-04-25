@@ -71,8 +71,8 @@ export class GameEngine {
 		// GameAgent.engine.camera.position.y=-1;
 		// GameAgent.engine.camera.position.z=1;
 		// GameAgent.engine.camera.rotation.x = THREE.MathUtils.DEG2RAD *30
-		const camHelper = new THREE.CameraHelper(this.camera);
-		this.scene.add(camHelper);
+		// const camHelper = new THREE.CameraHelper(this.camera);
+		// this.scene.add(camHelper);
 		// audio.on("play", () => requestAnimationFrame(this.#update.bind(this)));
 	}
 	songFinished() {
@@ -83,7 +83,7 @@ export class GameEngine {
 		this.#startEngine();
 	}
 	resume(sec) {
-		for (let index = 0; index < this.agent.field.lanes.length; index++)laneJudgeUpdate(null, index);
+		for (let index = 0; index < this.agent.field.lanes.length; index++)laneJudgeUpdate(null, index, null);
 		this.selfCrash.hide();
 		console.log("resume", new Date(), sec);
 		if (sec) this.musicPlayer.seek(sec * 1000);
@@ -181,9 +181,10 @@ export class GameEngine {
 		});
 		stats.showPanel(0);
 		stats.dom.classList.add("statJS");
-		document.querySelector(".statJS").replaceWith(stats.dom)
-		this.stats = stats;
+		document.querySelector(".statJS").replaceWith(stats.dom);
+		if (this.agent.userConfigs.fps) $(".statJS").addClass("active");
 
+		this.stats = stats;
 
 		this.resume();
 		// this.isRenderRunning = true;

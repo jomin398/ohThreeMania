@@ -41,12 +41,7 @@ export default class ComboSys {
         let comboElement = document.createElement('p');
         const s = this.#getKeyByIndex(this.SIDES, this.#side);
         comboElement.className = `combo ${s} fade`;
-        // 100의 배수에 따라 동적으로 클래스명 생성 및 추가
-        // if (combo % 100 === 0) {
-        //     const classSuffix = combo; // 100의 배수인 combo 값을 classSuffix로 사용
-        //     comboElement.classList.add(`c${classSuffix}`);
-        // }
-        const classSuffix = Math.floor((combo - 1) / 100) * 100; // combo 값을 100으로 나눈 후, 내림하여 100을 곱함
+        const classSuffix = Math.floor((combo - 1) / 100) * 100;
         comboElement.classList.add(`c${classSuffix}`);
         comboElement.innerText = combo;
         this.comboWrap.appendChild(comboElement);

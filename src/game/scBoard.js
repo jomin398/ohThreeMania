@@ -27,17 +27,27 @@ export const setUiState = (obj) => {
     if (scoreCont) document.querySelector(".scoreCont .score").innerText = autoComma(Math.trunc(score));
 }
 /**
- * 
+ * 레인 판정 표시 업데이트 함수
  * @param {[judgeText:string, fastLate:number, msc:number]} arr
- * @param {number} idx lane index 
+ * @param {number} idx lane index
+ * @param {{noteJudgmentCheck:boolean,fastLate:boolean,fastLateMS:boolean}?} config 
  */
-export function laneJudgeUpdate(arr, idx) {
+export function laneJudgeUpdate(arr, idx, config) {
     let judgeText, fastLate, msc;
     if (arr) [judgeText, fastLate, msc] = arr;
 
     const judgeElement = $(`#lane-${idx + 1}-judge`);
     let flClass = "";
     let flText = "";
+    let noteJudgmentCheck, dispFL, fastLateMS;
+    if (config) {
+        noteJudgmentCheck = config.noteJudgmentCheck;
+        dispFL = config.fastLate;
+        fastLateMS = config.fastLateMS;
+    }
+    if (!dispFL) fastLate = -1;
+    if (!noteJudgmentCheck) judgeText = "";
+    if (!fastLateMS) msc = null;
     switch (fastLate ?? -1) {
         case 0:
             //msc 가 음수일때.
@@ -55,9 +65,10 @@ export function laneJudgeUpdate(arr, idx) {
             break;
     }
 
+
     const str = `<span class="text">${judgeText ?? ''}</span>
         <span class="timing ${flClass}">${flText}</span>
-        <span class="msc ${flClass}">${msc ? (msc * -1).toFixed(2) : 0}</span>`
+        <span class="msc ${flClass}">${msc ? (msc * -1).toFixed(2) : ""}</span>`
     judgeElement.html(str);
 }
 export class Scoreboard {
@@ -101,7 +112,7 @@ export class Scoreboard {
             } else if (typeof e == 'number') {
                 laneIndex = e;
             }
-            laneJudgeUpdate(null, laneIndex);
+            laneJudgeUpdate(null, laneIndex, this.#game.userConfigs);
         };
     }
     // clearLane(idx) {
@@ -176,9 +187,7 @@ export class Scoreboard {
             judgeText = 'PERFECT';
         }
         this.updateJudge(noteJudge, judgeText, lane.laneIndex);
-        //this.#clearJudgeDisp();
-        //laneJudgeUpdate(this.#curJudges, this.#clearJudgeData.bind(this));
-        laneJudgeUpdate([judgeText, fastLate, offset], lane.laneIndex)
+        laneJudgeUpdate([judgeText, fastLate, offset], lane.laneIndex, this.#game.userConfigs)
 
         this.#accuracyScore += score;
         this.#noteCounter++;

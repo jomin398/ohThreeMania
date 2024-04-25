@@ -5,7 +5,7 @@ const CANVAS_SIZE = 256;
 const PLANE_SIZE = 1;
 const DEFAULT_WIDTH = 0.23;
 const DEFAULT_HEIGHT = 0.5;
-const DEFAULT_DISPLAY_TIME_MS = 150;
+const DEFAULT_DISPLAY_TIME_MS = 100;
 const INITIAL_POSITION = {
     x: 0,
     y: -0.9,
@@ -23,8 +23,9 @@ export default class LaneBgManager {
         this.checkStartTime = 0;
         this.width = DEFAULT_WIDTH;
         this.height = DEFAULT_HEIGHT;
-        this.displayTime = DEFAULT_DISPLAY_TIME_MS;
+        this.displayTime = lane.agent.userConfigs.notehapticLifeTime ?? DEFAULT_DISPLAY_TIME_MS;
         this.reqRemoveGradient = false;
+        this.enable = lane.agent.userConfigs.notehaptic;
         this.pos = INITIAL_POSITION;
     }
     /**
@@ -79,6 +80,7 @@ export default class LaneBgManager {
      * @param {number} direction 그라데이션 방향
      */
     add(color1, color2, direction = 0) {
+        if (!this.enable) return;
         const texture = this.#createTexture(this.#createGradientCanvas(color1, color2, direction));
         this.#applyTexture(this.pMesh, texture);
         return this.pMesh;
@@ -169,7 +171,7 @@ export default class LaneBgManager {
     }
     /** 그라데이션을 업데이트하는 함수 */
     update() {
-        if (!this.lane.agent || !this.lane.agent.engine || !this.reqRemoveGradient) return;
+        if (!this.lane.agent || !this.lane.agent.engine || !this.reqRemoveGradient || !this.enable) return;
         const currentTime = this.clockTime;
         if (currentTime - this.checkStartTime >= this.displayTime / 1000) {
             this.#resetGradient(this.pMesh);
@@ -179,7 +181,7 @@ export default class LaneBgManager {
     }
     /** 그라데이션 제거를 요청하는 함수 */
     requestRemoval() {
-        if (!this.lane.agent || !this.lane.agent.engine || this.reqRemoveGradient) return;
+        if (!this.lane.agent || !this.lane.agent.engine || this.reqRemoveGradient || !this.enable) return;
         this.reqRemoveGradient = true;
         this.checkStartTime = this.clockTime;
     }

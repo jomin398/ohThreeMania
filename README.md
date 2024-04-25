@@ -11,7 +11,7 @@ Osu! mania on Three.js
 - 스킨을 활용한 커스텀 마이징
 
 ## latest Update
-> [20240424](./update/20240424.md)
+> [20240425](./update/20240425.md)
 
 ## Note
 - default width is 400px. but, it can supports 1280px or more. 

@@ -19,16 +19,18 @@ export const canvasStr = `<main class="d-none">
   <audio id="music"></audio>
   <div class="renderOverlayWrap">
     <div class="renderOverlay">
-      <div class="titleCont">
-        <h4 class="songTitle d-flex justify-content-center"></h4>
-        <h4 class="songTitleSub"></h4>
-      </div>
-      <div class="scoreCont">
-        <div class="label_score">Score : </div>
-        <div class="score">0</div>
-      </div>
-      <div class="progress songPgn">
-        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="headerInfo">
+        <div class="titleCont">
+          <h4 class="songTitle d-flex justify-content-center"></h4>
+          <h4 class="songTitleSub"></h4>
+        </div>
+        <div class="scoreCont">
+          <div class="label_score">Score : </div>
+          <div class="score">0</div>
+        </div>
+        <div class="progress songPgn">
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
       </div>
       <div class="statJS"></div>
       ${accDebugTemp}
@@ -116,7 +118,7 @@ export function songLevelTemp(title, artist, vocalList, LvList, coverUrl, songSo
             <h1 class="modal-title fs-5" id="songSourceWrapLabel">테그 목록</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body d-flex flex-wrap align-content-start gap-2">
+          <div class="modal-body d-flex flex-wrap align-content-start gap-2" translate="no">
           ${songSources ? songSources : ''}
           </div>
         </div>
@@ -133,7 +135,7 @@ export const genLevelListTemplate = o => {
   if (!error) return `<input type="radio" class="btn-check" name="${songTitle}" id="btn-check-${songNum}_${difficultyNum}" autocomplete="off" ${difficultyNum == 0 ? 'checked' : ''}>
   <label class="btn levelItem text-white" for="btn-check-${songNum}_${difficultyNum}" style="border-color:${color};">
       <div class="innerWrap" style="background-color:${color};">
-        <span class="text">${difficulty}</span>
+        <span class="text" translate="no">${difficulty}</span>
         <div>
           <i class="bi bi-hourglass-split"></i>
           <span class="dur">${dur}</span>

@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import SkinParser from "./parser/skin.js";
+import skincss from "../input/skincss.min.js";
 export default class Skin {
     noteScale = 0.23;
     noteHeight = 2;
@@ -66,6 +67,8 @@ export default class Skin {
         await this.#parser.fromString();
         console.log(this.#parser)
         this.isDebugMode = Boolean(parseInt(this.#parser.General.DebugMode));
+        //for coloring or voice.
+        await skincss(this);
         return this.#parser;
     }
     async applyNoteSkin() {
