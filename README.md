@@ -1,6 +1,7 @@
 # ohThreeMania
-Osu! mania on Three.js
-
+Osu! mania 를 모바일 및 PC 에서 즐기자!  
+[미설치로 즐기기](https://jomin398.github.io/ohThreeMania/) / [설치해서 즐기기](./release/ohThreeMania.exe)  
+Powered by [Three.js](https://threejs.org/) and [Bootstrap 5](https://getbootstrap.com/)
 #### Supported Game Mode.
 - [v] mania (Only 4Key)
 - [ ] GrooveCoaster (Not implemented)
@@ -8,10 +9,14 @@ Osu! mania on Three.js
 ## features
 - 여러게의 비트맵 파일들을 (`.osz`) 업로드 하여 즐길 수 있다.
 - 유명 리듬게임 [Osu!](https://osu.ppy.sh/) 를 전격 호환
-- 스킨을 활용한 커스텀 마이징
+- 스킨을 활용한 커스텀 마이징 (기본 적용됨)
+- [기본 제공 비트멥 파일들](./example%20beatmaps/)
+- 설치 파일 제공! [설치파일 다운로드](./release/ohThreeMania.exe)
 
 ## latest Update
-> [20240425](./update/20240425.md)
+|로그파일|설치파일|
+|--------------------------------|---------------------------------------|
+|[20240426](./update/20240426.md)|[installer](./release/ohThreeMania.exe)|
 
 ## Note
 - default width is 400px. but, it can supports 1280px or more. 
