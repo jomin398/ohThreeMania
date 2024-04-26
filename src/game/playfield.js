@@ -1,6 +1,6 @@
 import gameAgent from "./agent.js";
 import { Lane } from "./lane.js";
-import { laneJudgeUpdate } from "./scBoard.js";
+import { laneJudgeUpdate } from "./score/index.js";
 
 export default class Playfield {
     scoreboard;

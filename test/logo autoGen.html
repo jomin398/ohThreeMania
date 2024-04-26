@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+        import ini from 'https://cdn.jsdelivr.net/npm/ini@4.1.2/+esm';
+
+
+        // HTML 요소를 생성하는 함수
+        async function parseDataFromIni(p) {
+            let t = await (await fetch(p)).text();
+            t += `\n[dev]\nh1="Team VJC LAB"\nwait=3000`;
+            const d = ini.parse(t);
+            const carouselInner = document.createElement('div');
+            carouselInner.className = 'carousel-inner d-flex align-items-center w-100 h-100';
+            const wrapper = document.createElement('div');
+            wrapper.id = "bootingLogos";
+            wrapper.className = "carousel slide position-absolute";
+            wrapper.dataset.interval = "false";
+
+
+            const voices = [];
+            const waitTimes = [];
+            Object.entries(d).forEach(([k, v]) => {
+                const carouselItem = document.createElement('div');
+                carouselItem.className = 'carousel-item text-center';
+                if (v.vo) voices.push(v.vo);
+                if (v.wait) waitTimes.push(v.wait);
+                if (v.h1) {
+                    const h1 = document.createElement('h1');
+                    h1.innerText = v.h1;
+                    carouselItem.appendChild(h1);
+                }
+                if (v.ruby) {
+                    const ruby = document.createElement('ruby');
+                    ruby.innerText = v.ruby;
+                    carouselItem.appendChild(ruby);
+                }
+                if (v.img) {
+                    const img = document.createElement('img');
+                    img.className = 'd-block w-50 m-auto';
+                    img.src = v.img;
+                    img.alt = v.alt || '';
+                    carouselItem.className += ' justify-v-center flex-column align-items-center';
+                    carouselItem.appendChild(img);
+                }
+                carouselInner.appendChild(carouselItem);
+            })
+            wrapper.append(carouselInner);
+            return [wrapper, voices, waitTimes];
+        }
+        // INI 파일 파싱 및 HTML 요소 생성
+        const [wrapper, voices, waitTimes] = await parseDataFromIni("../data/skin/boot.ini");
+        console.log(voices);
+
+
+        // 생성된 HTML 요소를 문서에 추가
+        $(document).ready(function () {
+            $(document.body).append(wrapper);
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

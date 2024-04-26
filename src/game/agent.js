@@ -1,9 +1,9 @@
 import { getFileExt, pgnBarUpdate } from "../utils.js";
 import { GameEngine } from "./engine.js";
 import EtternaJudgement from "./judge/etterna.js";
-import { Scoreboard, setUiState } from "./scBoard.js";
+import { Scoreboard, setUiState } from "./score/index.js";
 import Playfield from "./playfield.js";
-import { VoiceList } from "./booting.js";
+import { VoiceList } from "../boot/index.js";
 import { Howl } from "howler";
 import gameClient from "./gameClient.js";
 import { ResultScreen } from "./layouts/resultScreen.js";

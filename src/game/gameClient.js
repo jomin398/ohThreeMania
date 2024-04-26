@@ -2,7 +2,7 @@ import { findLatestArtistElm, padNumber } from "../utils.js";
 import { canvasStr } from "./layouts/main.js";
 import { filePage, fileInputInit } from "../input/filepage.min.js";
 import Skin from "./skin.js";
-import { booting } from "./booting.js";
+import booting from "../boot/index.js";
 import { titleScreen } from "./titleScreen.js";
 import { initCharts, songChangeHandler } from '../input/level.js';
 import { ProgressManager } from "./progressManager.js";

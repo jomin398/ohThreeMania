@@ -10,6 +10,10 @@ Powered by [Three.js](https://threejs.org/) and [Bootstrap 5](https://getbootstr
 - 여러게의 비트맵 파일들을 (`.osz`) 업로드 하여 즐길 수 있다.
 - 유명 리듬게임 [Osu!](https://osu.ppy.sh/) 를 전격 호환
 - 스킨을 활용한 커스텀 마이징 (기본 적용됨)
+    - 게임 플레이
+    - 곡 선택 (로비) 화면
+    - 부팅화면
+    - 로비 케릭터
 - [기본 제공 비트멥 파일들](./example%20beatmaps/)
 - 설치 파일 제공! [설치파일 다운로드](./release/ohThreeMania.exe)
 

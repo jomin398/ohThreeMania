@@ -1,0 +1,2 @@
+
+import { sleep } from "../utils.js"; import getLogoData from "./getlogodata.js"; export default async function showLogos(o,t,a){const skipSlide=o=>{$("#bootingLogos").carousel("dispose"),$("#bootingLogos").remove(),o(1)};return new Promise((async e=>{const[n,s,i,c]=await getLogoData(o,"boot.ini");if($(document.body).append(n),a)skipSlide(e);else{const a=$("#bootingLogos");a.find(".carousel-inner :nth-child(1)").addClass("active");for(let e=0;e<c;e++)s[e]&&(await t.init(o+s[e]),await t.play()),a.carousel(e+1),await sleep(i[e]);skipSlide(e)}}))}

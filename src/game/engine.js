@@ -2,10 +2,8 @@ import * as THREE from "three";
 import Stats from "../statsjs.js";
 import PauseMenu from "./layouts/pauseMenu.js";
 import selfCrash from "./selfCrash.js";
-import { findDifficultyCol } from "../calculate/findDifficultyCol.js";
 import EtternaJudgement from "./judge/etterna.js";
-import { msToTime } from "../utils.js";
-import { laneJudgeUpdate } from "./scBoard.js";
+import { laneJudgeUpdate } from "./score/index.js";
 import gameAgent from "./agent.js";
 window.THREE = THREE;
 
