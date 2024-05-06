@@ -17,11 +17,11 @@ async function parseZipFile(zipFile) {
 * @param {Object} zipFile
 * @param {File[]} array 
 * @param {ImageLoader} ImgLoader 
-* @param {ProgressManager} progressMgr 
+* @param {ProgressManager?} progressMgr 
 * @returns {{zip:Object,data:ManiaBeatmap,artist:String}[]}
 */
 export async function process(zipFile, array, ImgLoader, progressMgr) {
-    const update = (partProccedNum, partListLength, titleUnicode, totalProgress) => progressMgr.updateProgress(partProccedNum, partListLength, titleUnicode, totalProgress);
+    const update = progressMgr ? (partProccedNum, partListLength, titleUnicode, totalProgress) => progressMgr.updateProgress(partProccedNum, partListLength, titleUnicode, totalProgress) : () => { };
     const zip = await parseZipFile(zipFile);
     let partProccedNum = 0;
     let totalProgress = 0;
@@ -61,8 +61,11 @@ export async function process(zipFile, array, ImgLoader, progressMgr) {
     });
 
     const parsedData = (await Promise.all(osuFilePromises)).filter(Boolean);
-    progressMgr.processedCount++;
-    totalProgress = progressMgr.processedCount / array.length;
+    if (progressMgr) {
+        progressMgr.processedCount++;
+        totalProgress = progressMgr.processedCount / array.length;
+    }
+
     if (!parsedData[0]) throw new class ChecKBeatmapError extends Error {
         constructor() {
             super('Beatmap Checking Error');
@@ -71,6 +74,6 @@ export async function process(zipFile, array, ImgLoader, progressMgr) {
     };
     if (!parsedData[0]?.error && parsedData[0].data)
         update(null, null, parsedData[0].data.metadata.titleUnicode, totalProgress);
-   
+
     return parsedData;
 }

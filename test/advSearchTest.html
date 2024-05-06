@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
+    <base href="../">
+    <script type="importmap">
+        {
+          "imports": {
+            "jszip": "https://cdn.jsdelivr.net/npm/jszip@latest/+esm",
+            "osu-classes": "./src/calculate/classes.mjs",
+            "osu-standard-stable": "./src/calculate/standard-stable.mjs",
+            "osu-mania-stable": "./src/calculate/mania-stable.mjs",
+            "osu-parsers": "./src/calculate/parsers.mjs",
+            "buffer": "https://cdn.jsdelivr.net/npm/@jspm/core@2.0.1/nodelibs/browser/buffer.min.js",
+            "osu-pp-calculator": "./src/calculate/index.js"
+          }
+        }
+    </script>
+    <script type="module">
+        import { process } from './src/game/parser/process.js';
+        import ImageLoader from './src/input/imageloader.min.js';
+        import { sleep } from './src/utils.js';
+        import { findDifficultyCol } from './src/calculate/findDifficultyCol.js';
+        //Example beatmap Sets root Path.
+        const bMapRootPath = "./example beatmaps/";
+
+        //simulate user uploaded beatmapSet files.
+        const files = await Promise.all([
+            await (await fetch(bMapRootPath + "1630781 Ogura Yui - Clear Morning.osz")).blob(),
+            await (await fetch(bMapRootPath + "1634446 Mitsukiyo - Blue New World.osz")).blob()])
+        const imgLoader = new ImageLoader();
+
+        //비트멥 세트를 파싱.
+        async function parseBeatmapSet(files) {
+            //레벨(보면)들 로딩
+            const charts = await Promise.all(Array.from(files).map((file, _idx, arr) => process(file, arr, imgLoader)))
+                .catch(e => {
+                    console.error(e)
+                    //client.toastMgr.showToast(`osz 파일을 로딩하는데에 실패했습니다.`, "initCharts", -1, false);
+                });
+            await sleep(1000);
+
+            // 각 최상위 배열의 원소에 대해 반복하며 비트셋 내부 배열을 starRate 기준으로 정렬
+            if (charts) charts.forEach(group => {
+                if (!group) return;
+                group.sort((a, b) => a.data.difficulty.starRate - b.data.difficulty.starRate);
+            });
+
+            return charts;
+        };
+
+        const parsedBeatmapSetData = await parseBeatmapSet(files);
+        //console.log(parsedBsetData);
+
+        //검색함수
+        function search(e, parsedBsetData) {
+            console.log($(this).val())
+            const searchText = $(this).val();
+            let searchResults = [];
+            // 검색 실행
+            if (searchText) {
+                const str = searchText.toLowerCase();
+                parsedBsetData.forEach((beatmapSet, index) => {
+                    beatmapSet.forEach((beatmap) => {
+                        var metadata = beatmap.data.metadata;
+                        if (metadata.title.toLowerCase().includes(str) ||
+                            metadata.artist.toLowerCase().includes(str) ||
+                            metadata.source.toLowerCase().includes(str) ||
+                            metadata.tags.map(e => e.toLowerCase()).includes(str)) {
+                            searchResults.push(index); // 비트맵세트 인덱스 추가
+                        }
+                    });
+                });
+            }
+
+            // 중복 제거
+            searchResults = [...new Set(searchResults)];
+
+            // 검색 결과 표시
+            return searchResults;
+            // $("#results").html(searchResults.join(", "));
+        }
+        function appendBeatmapSet(beatmapSet, uniqIndex) {
+            console.log(beatmapSet,uniqIndex)
+            var searchResults = $('#results');
+            searchResults.empty(); // 이전 검색 결과를 지웁니다.
+            // 비트맵 세트 아코디언 아이템 생성
+            const setId = `beatmapSet-${uniqIndex}`;
+            const setItem = `
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-${setId}">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${setId}" aria-expanded="true" aria-controls="collapse-${setId}">
+            ${uniqIndex}번 비트멥세트
+        </button>
+        </h2>
+        <div id="collapse-${setId}" class="accordion-collapse collapse" aria-labelledby="heading-${setId}" data-bs-parent="#results">
+        <div class="accordion-body">
+            <div class="accordion accordion-inner" id="inner-${setId}"></div>
+        </div>
+        </div>
+    </div>
+    `;
+            searchResults.append(setItem);
+
+            // 비트맵 세트 내의 비트맵에 대한 아코디언 아이템 생성
+            const innerAccordion = $(`#inner-${setId}`);
+            beatmapSet.forEach((beatmapObj, mapIndex) => {
+                const beatmap = beatmapObj.data;
+                console.log(beatmap)
+                const mapId = `beatmap-${uniqIndex}-${mapIndex}`;
+                const difObj = {
+                    "CS": beatmap.difficulty.circleSize,
+                    "HP": beatmap.difficulty.drainRate,
+                    "OD": beatmap.difficulty.overallDifficulty,
+                    "MP": beatmap.difficulty.sliderMultiplier,
+                    "TR": beatmap.difficulty.sliderTickRate,
+                    "CR": beatmap.difficulty.clockRate,
+                    "AR": beatmap.difficulty.approachRate,
+                    "SR": beatmap.difficulty.starRate
+                }
+                const [SRDiff, color] = findDifficultyCol(difObj.SR);
+
+                const mapItem = `
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-${mapId}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${mapId}" 
+            aria-expanded="false" aria-controls="collapse-${mapId}"
+            style="background-color:${color};">
+                ${beatmap.difficultyName} (${difObj.SR} = ${SRDiff})
+            </button>
+            </h2>
+            <div id="collapse-${mapId}" class="accordion-collapse collapse" aria-labelledby="heading-${mapId}">
+            <div class="accordion-body">
+                <!-- 여기에 비트맵 정보를 추가 -->
+                BPM: ${beatmap.bpm.toFixed(2)}<br>
+                모드: ${beatmap.mode}
+            </div>
+            </div>
+        </div>
+        `;
+                innerAccordion.append(mapItem);
+            });
+        }
+
+        // 검색 결과를 기반으로 목록을 생성하는 함수입니다.
+        function displaySearchResults(indexs, parsedBeatmapSetData, dispAll) {
+            if (!dispAll) {
+                indexs.forEach(function (indexNo, uniqIndex) {
+                    appendBeatmapSet(parsedBeatmapSetData[indexNo], uniqIndex);
+                })
+            } else {
+                parsedBeatmapSetData.forEach(function (beatmap, uniqIndex) {
+                    appendBeatmapSet(beatmap, uniqIndex);
+                })
+            };
+        };
+
+        $(document).ready(function () {
+            //전체가 보여지게 함.
+            displaySearchResults(null, parsedBeatmapSetData, true);
+            //검색박스에 입력이 있으면
+            // $("#searchInput").on("input", function (e) {
+            //     displaySearchResults(search.call(this, e, parsedBeatmapSetData), parsedBeatmapSetData);
+            // });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" id="searchInput" placeholder="검색...">
+    <button id="searchButton">검색</button>
+    <div id="results" class="accordion"></div>
+
+</body>
+
+</html>
